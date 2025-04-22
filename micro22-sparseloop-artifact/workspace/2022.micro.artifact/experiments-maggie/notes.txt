@@ -1,0 +1,7 @@
+Workflow:
+1. Run accelergy to obtain ERT and ART yamls
+2. Run either timeloop-mapper or timeloop-model
+    timeloop-mapper is good for finding an optimal mapping when we don't give it one
+    timeloop-model is good for running a specific mapping
+    no need to run timeloop-model with the optimal mapping that timeloop-mapper gives us because it will just be the same output since timeloop-mapper already runs timeloop-model with optimal mapping for us
+3. Parse and plot energy stats
