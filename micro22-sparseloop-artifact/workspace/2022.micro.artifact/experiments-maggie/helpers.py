@@ -56,7 +56,7 @@ def run_accelergy(
     # Specify output directory
     cmd.extend(["-o", str(temp_dir)])
     
-    cmd.append("-v")
+    cmd.append("-v 1")
     
     # Run Accelergy
     try:
@@ -315,8 +315,6 @@ def plot_read_write_energy(energy_breakdown_pJ):
     Plot read and write energy breakdown given dict of energy breakdown.
     """
     levels = list(energy_breakdown_pJ.keys())
-    print(type(energy_breakdown_pJ))
-    print(energy_breakdown_pJ)
 
     read_energies = []
     write_energies = []
@@ -361,58 +359,5 @@ def plot_read_write_energy(energy_breakdown_pJ):
     plt.tight_layout()
     plt.show()
 
-
-
-
-def test_run():
-    verbose = True
-    architecture = "/home/workspace/2022.micro.artifact/experiments-maggie/arch.yaml"
-    # component = "/home/workspace/2022.micro.artifact/experiments-maggie/compound_components.yaml"
-    ERT_output_path = "ERT.yaml"
-    ART_output_path = "ART.yaml"
-    workload = "/home/workspace/2022.micro.artifact/experiments-maggie/L07.yaml"
-    mapper = "/home/workspace/2022.micro.artifact/experiments-maggie/mapper.yaml"
-    mapping = "/home/workspace/2022.micro.artifact/experiments-maggie/timeloop_temp/timeloop-mapper.map.yaml"
-    constraints = "/home/workspace/2022.micro.artifact/experiments-maggie/constraints.yaml"
-    # config = "/home/workspace/2022.micro.artifact/experiments-maggie/config.yaml"
-    
-    # # Run Accelergy with the provided arguments
-    # result = run_accelergy(
-    #     architecture_yaml=architecture,
-    #     component_yaml=component,
-    #     ERT_output_path=ERT_output_path,
-    #     ART_output_path=ART_output_path
-    # )
-    
-    # print(f"Generated ERT file: {result['ERT']}")
-    # print(f"Generated ART file: {result['ART']}")
-
-    # Run Timeloop mapper with the provided arguments
-    result = run_timeloop_mapper(
-        architecture_yaml=architecture,
-        workload=workload,
-        ERT=ERT_output_path,
-        ART=ART_output_path,
-        output_mapping_path="searched_mapping.yaml",
-        mapper=mapper,
-        constraints=constraints
-    )
-
-    mapping_path = result["best_mapping"]
-
-    output_path = run_timeloop(
-        arch_yaml=architecture,
-        workload=workload,
-        mapping=mapping_path,
-        constraints=constraints,
-        mapper=mapper,
-        ert_path=ERT_output_path,
-        art_path=ART_output_path,
-        output_dir="timeloop_output_test_3"
-    )
-
-    # # Test plotting functions
-    # output = parse_timeloop_stats("timeloop_output_test_2/timeloop-model.map+stats.xml")
-    # plot_read_write_energy(output["energy_breakdown_pJ"])
 
 

@@ -1,0 +1,41 @@
+problem:
+  shape:
+    name: "1D-CONV"
+    dimensions: [K, X, C, M, N]  # Kernel, Width, Channels, Filters, Batches
+    coefficients:
+      - name: stride
+        default: 1
+      - name: dilation
+        default: 1
+
+    data-spaces:
+      - name: Weights
+        projection:
+          - [ [C] ]
+          - [ [M] ]
+          - [ [K] ]
+      - name: Inputs
+        projection:
+          - [ [N] ]
+          - [ [C] ]
+          - [ [K, dilation], [X, stride] ]  # K*dilation + X*stride
+      - name: Outputs
+        projection:
+          - [ [N] ]
+          - [ [M] ]
+          - [ [X] ]
+        read-write: True
+
+  instance:
+    K: 3     # Kernel size
+    X: 128   # Input width
+    C: 16    # Input channels
+    M: 32    # Output channels
+    N: 1     # Batch size
+    densities:
+      Inputs:
+        distribution: hypergeometric
+        density: 1e-9
+      Weights:
+        distribution: hypergeometric
+        density: 1e-9
