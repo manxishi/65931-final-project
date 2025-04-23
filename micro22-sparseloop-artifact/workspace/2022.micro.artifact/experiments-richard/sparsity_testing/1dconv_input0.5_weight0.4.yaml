@@ -1,0 +1,47 @@
+problem:
+  shape:
+    name: 1DCONV
+    dimensions:
+    - R
+    - E
+    - C
+    - M
+    - N
+    coefficients:
+    - name: Wstride
+      default: 1
+    - name: Wdilation
+      default: 1
+    data-spaces:
+    - name: Weights
+      projection:
+      - - - M
+      - - - C
+      - - - R
+    - name: Inputs
+      projection:
+      - - - N
+      - - - C
+      - - - R
+          - Wdilation
+        - - E
+          - Wstride
+    - name: Outputs
+      projection:
+      - - - N
+      - - - M
+      - - - E
+      read-write: true
+  instance:
+    M: 64
+    E: 32
+    R: 1
+    N: 1
+    C: 64
+    densities:
+      Inputs:
+        distribution: hypergeometric
+        density: 0.5
+      Weights:
+        distribution: hypergeometric
+        density: 0.4

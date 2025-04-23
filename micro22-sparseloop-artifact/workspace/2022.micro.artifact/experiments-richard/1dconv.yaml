@@ -1,0 +1,40 @@
+problem:
+  shape:
+    name: "1DCONV"
+    dimensions: [R, E, C, M, N ]
+    coefficients:
+      - name: Wstride
+        default: 1
+      - name: Wdilation
+        default: 1
+        
+    data-spaces:
+      - name: Weights # W[M, C, R]
+        projection:
+          - [ [M] ]
+          - [ [C] ]
+          - [ [R] ]
+      - name: Inputs # I[N, C, R*Wdilation + E*Wstride]
+        projection:
+          - [ [N] ]
+          - [ [C] ]
+          - [ [R, Wdilation], [E, Wstride] ] 
+      - name: Outputs # O[N, M, E]
+        projection:
+          - [ [N] ]
+          - [ [M] ]
+          - [ [E] ]
+        read-write: True
+  instance: 
+    M: 64   
+    E: 32   
+    R: 1   
+    N: 1   
+    C: 64   
+    densities: 
+      Inputs: 
+        distribution: hypergeometric
+        density: 1
+      Weights: 
+        distribution: hypergeometric
+        density: 1
