@@ -95,6 +95,7 @@ def run_accelergy(
 def run_timeloop_mapper(
     architecture_yaml,
     workload,
+    sparse_opts,
     ERT="ERT.yaml",
     ART="ART.yaml",
     output_mapping_path="searched_mapping.yaml",
@@ -131,7 +132,8 @@ def run_timeloop_mapper(
     # Add main input files
     cmd.extend([
         architecture_yaml,
-        workload
+        workload,
+        sparse_opts
     ])
     
     # Add optional input files if provided
@@ -224,6 +226,7 @@ def run_timeloop(
     arch_yaml,
     workload,
     mapping,
+    sparse_opts,
     constraints,
     mapper,
     ert_path,
@@ -246,6 +249,7 @@ def run_timeloop(
         str(arch_yaml),
         str(workload),
         str(mapping),
+        sparse_opts,
         # str(constraints),
         # str(mapper),
         "--ERT", str(ert_path),
