@@ -1,0 +1,25 @@
+
+BackingStorage [ Weights:4096 (410) Inputs:2048 (1434) Outputs:2048 (2048) ] 
+----------------------------------------------------------------------------
+| for E in [0:2)
+
+iact_spad [ ] 
+-------------
+|   for M in [0:2)
+|     for E in [0:4)
+
+weight_spad [ ] 
+---------------
+|       for M in [0:16)
+|         for E in [0:2)
+
+psum_spad [ Outputs:4 (4) ] 
+---------------------------
+|           for E in [0:2)
+|             for C in [0:64)
+|               for M in [0:2)
+
+reg [ ] 
+-------
+|                 for N in [0:1)
+

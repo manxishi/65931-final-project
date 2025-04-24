@@ -2,7 +2,7 @@ mapper:
   optimization-metric: edp  # or 'energy', 'delay', 'utilization', etc.
   num-threads: 4
   victory-condition: 100
-  timeout: 1000
+  timeout: 100
   search-size: 1000
   log-interval: 10
   algorithm: random

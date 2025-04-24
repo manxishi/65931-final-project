@@ -338,8 +338,16 @@ def plot_read_write_energy(energy_breakdown_pJ):
     read_energies = []
     write_energies = []
 
+    ignore = ["BackingStorage"]
+
     for level in levels:
         stats = energy_breakdown_pJ[level]
+        print(level, "\n\n\n")
+        print(stats)
+        if level in ignore:
+            read_energies.append(0)
+            write_energies.append(0)
+            continue
 
         # Skip levels with no detailed energy (e.g., MAC)
         if 'actual_reads_per_instance' not in stats:
@@ -381,13 +389,13 @@ def plot_read_write_energy(energy_breakdown_pJ):
 
 
 
-def test_run():
+def test_run(workload_path):
     verbose = True
     architecture = "/home/workspace/2022.micro.artifact/experiments-richard/arch.yaml"
     component = "/home/workspace/2022.micro.artifact/experiments-richard/compound_components.yaml"
     ERT_output_path = "ERT.yaml"
     ART_output_path = "ART.yaml"
-    workload = "/home/workspace/2022.micro.artifact/experiments-richard/1dconv.yaml"
+    workload = "/home/workspace/2022.micro.artifact/experiments-richard/sparsity_testing/" + workload_path
     mapper = "/home/workspace/2022.micro.artifact/experiments-richard/mapper.yaml"
     mapping = "/home/workspace/2022.micro.artifact/experiments-richard/timeloop_temp/timeloop-mapper.map.yaml"
     constraints = "/home/workspace/2022.micro.artifact/experiments-richard/constraints.yaml"
@@ -407,12 +415,14 @@ def test_run():
     # print(f"Generated ART file: {result['ART']}")
 
     # Run Timeloop mapper with the provided arguments
+    out_path = workload_path.strip(".yaml")
+    os.makedirs(out_path, exist_ok=True)
     result = run_timeloop_mapper(
         architecture_yaml=architecture,
         workload=workload,
         ERT=ERT_output_path,
         ART=ART_output_path,
-        output_mapping_path="searched_mapping.yaml",
+        output_mapping_path=out_path + "/searched_mapping.yaml",
         mapper=mapper,
         sparse_opts=sparse_opts,
         constraints=constraints
@@ -429,11 +439,41 @@ def test_run():
         mapper=mapper,
         ert_path=ERT_output_path,
         art_path=ART_output_path,
-        output_dir="timeloop_output_test"
+        output_dir=out_path
     )
 
     # # Test plotting functions
+    output = parse_timeloop_stats(out_path + "/timeloop-model.map+stats.xml")
+    plot_read_write_energy(output["energy_breakdown_pJ"])
+
+
+def plot_stats():
     output = parse_timeloop_stats("timeloop_output_test/timeloop-model.map+stats.xml")
     plot_read_write_energy(output["energy_breakdown_pJ"])
 
 
+def plot_total_energy_breakdown():
+    output = parse_timeloop_stats("timeloop_output_test/timeloop-model.map+stats.xml")
+    energy_breakdown = output["energy_breakdown_pJ"]
+    levels = list(energy_breakdown.keys())
+
+    energies = []
+
+    for level in levels:
+        stats = energy_breakdown[level]
+        energies.append(stats["energy"])
+
+    x = np.arange(len(levels))
+    width = 0.35
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.bar(x, energies, width, label='Energy (pJ)', color='skyblue')
+
+    ax.set_ylabel('Energy (pJ)')
+    ax.set_title('Energy per Level')
+    ax.set_xticks(x)
+    ax.set_xticklabels(levels, rotation=45, ha='right')
+    ax.legend()
+    ax.grid(axis='y', linestyle='--', alpha=0.6)
+    plt.tight_layout()
+    plt.show()
