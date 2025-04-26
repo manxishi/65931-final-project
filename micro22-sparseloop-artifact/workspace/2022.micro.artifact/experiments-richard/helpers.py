@@ -338,7 +338,7 @@ def plot_read_write_energy(energy_breakdown_pJ):
     read_energies = []
     write_energies = []
 
-    ignore = ["BackingStorage"]
+    ignore = []
 
     for level in levels:
         stats = energy_breakdown_pJ[level]

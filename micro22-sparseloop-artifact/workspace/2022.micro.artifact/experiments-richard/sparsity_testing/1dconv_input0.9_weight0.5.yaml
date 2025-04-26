@@ -33,11 +33,11 @@ problem:
       - - - E
       read-write: true
   instance:
-    M: 64
+    M: 4
     E: 32
-    R: 1
+    R: 16384
     N: 1
-    C: 64
+    C: 16
     densities:
       Inputs:
         distribution: hypergeometric
