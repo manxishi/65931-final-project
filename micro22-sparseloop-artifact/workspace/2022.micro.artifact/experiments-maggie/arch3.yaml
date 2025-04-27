@@ -1,0 +1,68 @@
+architecture:
+  version: 0.2
+  subtree:
+    - name: eyeriss_v2
+      attributes:
+        technology: 45nm
+
+      # Flattened array of 8×2×3×4 = 192 PEs
+      subtree:
+        - name: pe[0..191]
+          attributes:
+            meshX: 8     # 8 columns of clusters
+            meshY: 2     # 2 rows of clusters
+          local:
+            - name: BackingStorage
+              class: DRAM
+              subclass: DRAM
+              attributes:
+                type: HBM2
+                width: 256
+                block-size: 16
+                word-bits: 16
+                metadata_storage_width: 16
+
+            - name: iact_spad
+              class: SRAM_MD
+              attributes:
+                technology: 45nm
+                data_storage_depth: 16
+                data_storage_width: 8
+                metadata_storage_depth: 25
+                metadata_storage_width: 4
+                word-bits:              8
+
+            - name: weight_spad
+              class: SRAM_MD
+              attributes:
+                technology: 45nm
+                data_storage_depth: 192
+                data_storage_width: 8
+                metadata_storage_depth: 128
+                metadata_storage_width: 8
+                word-bits:              8
+
+            - name: psum_spad
+              class: SRAM_MD
+              attributes:
+                technology: 45nm
+                data_storage_depth: 32
+                data_storage_width: 20
+                word-bits: 20
+                metadata_storage_depth: 0
+                metadata_storage_width: 0
+
+            - name: reg
+              class: SRAM_MD
+              attributes:
+                technology: 45nm
+                data_storage_depth: 1
+                data_storage_width: 8
+                metadata_storage_depth: 1
+                metadata_storage_width: 4
+                word-bits:              8
+
+            - name: MAC
+              class: Imac
+              attributes:
+                datawidth: 8

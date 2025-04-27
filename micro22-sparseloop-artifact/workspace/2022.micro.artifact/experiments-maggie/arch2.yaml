@@ -1,0 +1,221 @@
+architecture:
+  version: 0.2
+  subtree:
+    - name: system
+      local:
+        - name: BackingStorage
+          class: DRAM
+          attributes:
+            type: HBM2
+            width: 256
+            block-size: 16
+            word-bits: 16
+            metadata_storage_width: 16     # ← new
+            metadata_storage_depth: 0
+      subtree:
+        - name: eyeriss_v2
+          attributes:
+            technology: 45nm            # chip technology
+          # ------------------------------------------------------------------
+          # on-chip hierarchical mesh that connects the 8×2 PE / GLB clusters
+          # ------------------------------------------------------------------
+                
+          local:
+            - name: cluster_noc
+              class: XY_NoC
+              attributes:
+                technology: 45nm
+                n_PE_rows: 2          # 8×2 cluster mesh
+                n_PE_cols: 8
+                datawidth: 24         # 24-bit flits
+                Y_comp_width: 1
+                X_comp_width: 3
+                wire_avg_len_mm: 2
+
+          # ------------------------------------------------------------------
+          # PE-cluster array (8×2 = 16 clusters)
+          # ------------------------------------------------------------------
+          subtree:
+            - name: pe_cluster[0..15]
+              attributes: { meshX: 8, meshY: 2 }
+              local:
+                - name: iact_router[0..2]
+                  class: router
+                  attributes:
+                    src_ports: 12
+                    dst_ports: 12
+                    flit_bits: 24
+
+                - name: weight_router[0..2]
+                  class: router
+                  attributes:
+                    src_ports: 12
+                    dst_ports: 12
+                    flit_bits: 24
+
+                - name: psum_router[0..3]
+                  class: router
+                  attributes:
+                    src_ports: 12
+                    dst_ports: 12
+                    flit_bits: 40
+                - name: iact_bank[0..3]
+                  class: smartbuffer_SRAM          # use the plug-in model
+                  attributes:
+                    technology: 45nm
+                    memory_depth: 768             # 1.5 kB ÷ 2 B/word
+                    memory_width: 16
+                    word-bits: 8
+                - name: psum_bank[0..3]
+                  class: smartbuffer_SRAM
+                  attributes:
+                    technology: 45nm
+                    memory_depth: 768             # 1.875 kB ÷ 2.5 B/word
+                    memory_width: 20
+                    word-bits: 20
+
+                
+              subtree:
+                - name: pe[0..11]       # 3×4 PEs per cluster
+                  attributes: { meshX: 3, meshY: 4 }
+                  local:
+                    - name: iact_spad
+                      class: SRAM_MD
+                      attributes:
+                        technology: 45nm
+                        data_storage_depth:   16   # 16 words × 8 b
+                        data_storage_width:   8
+                        word-bits:              8
+                        metadata_storage_depth: 25
+                        metadata_storage_width: 4
+
+                    - name: weight_spad
+                      class: SRAM_MD
+                      attributes:
+                        technology: 45nm
+                        data_storage_depth:  192   # 192 words × 8 b
+                        data_storage_width:   8
+                        word-bits:              8
+                        metadata_storage_depth: 128
+                        metadata_storage_width: 8
+
+                    - name: psum_spad
+                      class: SRAM_MD
+                      attributes:
+                        technology: 45nm
+                        data_storage_depth:   32   # 32 words × 20 b
+                        data_storage_width:  20
+                        word-bits:              20
+                        metadata_storage_depth: 0      # no metadata
+                        metadata_storage_width: 0
+                        
+                    - name: reg
+                      class: storage
+                      subclass: SRAM_MD # we use sram for regfile, sram, and reg, the plug-in uses the right energy number
+                      attributes:
+                        data_storage_depth: 1
+                        data_storage_width: 8
+                        word-bits: 8
+                        metadata_storage_width: 4
+                        metadata_storage_depth: 1
+                        
+                    - name: MAC
+                      class: compute
+                      subclass: Imac
+                      attributes:
+                        datawidth: 8
+
+#                     - name: ifmap_spad
+# #                       class: smartbuffer_RF
+# #                       attributes:
+# #                         memory_depth: 8
+# #                         memory_width: 16
+# #                         block-size: 1
+# #                         word-bits: 8
+#                       class: storage
+#                       subclass: SRAM_MD 
+#                       attributes:
+#                         data_storage_depth: 16
+#                         data_storage_width: 8
+#                         metadata_storage_depth: 25  # 25  # 9 addr entries, 16 run entries   
+#                         metadata_storage_width: 4
+#                         datawidth: 8
+#                         block_size: 1
+
+#                     - name: weight_spad
+# #                       class: smartbuffer_RF
+# #                       attributes:
+# #                         memory_depth: 8
+# #                         memory_width: 16
+# #                         block-size: 1
+# #                         word-bits: 8
+#                       class: storage
+#                       subclass: SRAM_MD
+#                       attributes:
+#                         data_storage_depth: 192      
+#                         data_storage_width: 8
+#                         metadata_storage_depth: 128  # 16 7b addr entries, 192 4b run entries
+#                         metadata_storage_width: 8
+#                         datawidth: 8
+#                         block_size: 1
+
+#                     - name: psum_spad
+# #                       class: smartbuffer_RF
+# #                       attributes:
+# #                         memory_depth: 8
+# #                         memory_width: 20
+# #                         update_fifo_depth: 2
+# #                         block-size: 1
+# #                         word-bits: 20
+#                       class: storage
+#                         subclass: SRAM
+#                         attributes:
+#                           depth: 32
+#                           width: 20
+#                           datawidth: 20
+#                           block_size: 1
+
+#                 - name: router_cluster
+#                   local:
+#                     - name: iact_router[0..2]
+#                       class: router
+#                       attributes:
+#                         src_ports: 12
+#                         dst_ports: 12
+#                         flit_bits: 24
+
+#                     - name: weight_router[0..2]
+#                       class: router
+#                       attributes:
+#                         src_ports: 12
+#                         dst_ports: 12
+#                         flit_bits: 24
+
+#                     - name: psum_router[0..3]
+#                       class: router
+#                       attributes:
+#                         src_ports: 12
+#                         dst_ports: 12
+#                         flit_bits: 40
+
+               
+            # ----------------------------------------------------------------
+            # GLB-cluster array (same 8×2 mesh, 1.5 kB iact + 1.875 kB psum)
+            # ----------------------------------------------------------------
+#             - name: glb_cluster[0..15]
+#               attributes: { meshX: 8, meshY: 2 }
+#               local:
+#                 - name: iact_bank[0..2]
+#                   class: smartbuffer_SRAM          # use the plug-in model
+#                   attributes:
+#                     technology: 45nm
+#                     memory_depth: 768             # 1.5 kB ÷ 2 B/word
+#                     memory_width: 16
+#                     word-bits: 8
+#                 - name: psum_bank[0..3]
+#                   class: smartbuffer_SRAM
+#                   attributes:
+#                     technology: 45nm
+#                     memory_depth: 768             # 1.875 kB ÷ 2.5 B/word
+#                     memory_width: 20
+#                     word-bits: 20

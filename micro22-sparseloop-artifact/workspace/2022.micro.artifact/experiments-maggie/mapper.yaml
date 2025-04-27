@@ -1,8 +1,142 @@
+# mapper:
+#   optimization-metric: edp  # or 'energy', 'delay', 'utilization', etc.
+#   num-threads: 6
+#   victory-condition: 100
+#   timeout: 10
+#   search-size: 10
+#   log-interval: 10
+#   algorithm: random-pruned
+#   max-permutations-per-if-visit: 16
+# mapper:
+#   version: 0.3
+
+#   # search settings
+#   algorithm: linear_pruned
+#   victory_condition: 500          # stop after 500 valid mappings
+#   timeout: 300                    # or 5-minute wall clock
+
+#   # pruning knobs
+#   index_factorization:
+#     options_limit_per_dimension: 6
+#   max_permutations_per_ifactor: 1
+
+#   # objectives
+#   optimization_metrics:
+#     - energy
+#     - delay
+
+#   # bookkeeping
+#   num_best_mappings: 20
+#   emit_worst_mappings: false
+#   live_status_delay: 5
+
+#   # threading
+#   parallelism: 4
+# mapper:
+#   version: 0.3
+
+#   optimization-metric: delay  # or 'energy' if you want energy-optimal instead
+#   num-threads: 8              # or however many CPU cores you want to use
+#   victory-condition:
+#     timeout: 10            # in seconds, how long to search before stopping
+#     evaluations: 10         # stop after 1000 mappings evaluated
+#     best: 1
+
+#   algorithm: random-pruned   # good and fast search
+#   max-permutations-per-if-constraint: 10000
+#   sync-interval: 1000
+
+#   # Optional: constrain how much levels you search
+#   search-size:
+#     max-tiling-levels: 4     # no more than 4 levels deep in tiling hierarchy
+#     timeout: 10              # seconds allowed per search thread
+#     victory: 1             # mappings per search thread
+
+#   # Optional: change this for very small problem sizes
+#   log-stats: true
 mapper:
-  optimization-metric: edp  # or 'energy', 'delay', 'utilization', etc.
-  num-threads: 4
-  victory-condition: 100
-  timeout: 1000
-  search-size: 1000
-  log-interval: 10
-  algorithm: random
+  optimization-metrics: [energy, delay]
+  optimization-target: latency
+  search-size: 256
+  victory-condition: 1
+  timeout: 600  # seconds (10 minutes max)
+
+  algorithm: random-pruned
+  num-threads: 16
+
+  log-interval: 1   # print progress after every valid mapping
+
+  constraints:
+    spatial:
+      - target: PE
+        factors: M=1  # Force output channels across PEs (common for Eyeriss)
+    temporal:
+      - target: PE
+        factors: N=1  # Force batch dimension to be temporally reused inside PE
+        permutation: [N, R, S, C, M, E, F, G]  # Fixed order to reduce permutation space
+
+    datatype-spatial:
+      - target: iact_spad
+        keep: [Inputs]
+      - target: weight_spad
+        keep: [Weights]
+      - target: psum_spad
+        keep: [Outputs]
+
+    datatype-temporal:
+      - target: iact_spad
+        keep: [Inputs]
+      - target: weight_spad
+        keep: [Weights]
+      - target: psum_spad
+        keep: [Outputs]
+
+    storage-bypass:
+      - target: BackingStorage
+        bypass: [Inputs, Weights, Outputs]  # DRAM is always bypassed except for loads/stores
+      - target: reg
+        bypass: [Weights, Outputs]
+        keep: [Inputs]  # Only Inputs are kept temporally at MAC register
+
+
+# mapper:
+#   version: 0.3
+
+#   # 1. Mapping construction
+#   algorithm: linear_pruned            # fast, heuristic pruning
+#   victory_condition: 600              # stop after 600 valid mappings
+#   timeout:          240               # or after 240 s wall-clock
+#   max_permutations_per_ifactor: 128   # early cut for perms
+
+#   # 2. Evaluation metrics
+#   optimization_metrics:
+#     - energy
+#     - delay
+
+#   # 3. Output detail
+#   num_best_mappings:  20
+#   emit_worst_mappings: false
+#   live_status_delay:  5               # live progress every 5 s
+
+#   # 4. Threading
+#   parallelism: 4                      # four cores on this VM
+# mapper:
+#   version: 0.3
+
+#   # search algorithm
+#   algorithm: linear_pruned
+#   victory_condition: 400        # stop after 400 legal mappings
+#   timeout:           180        # or after 3 minutes
+
+#   # pruning knobs
+#   max_permutations_per_ifactor: 1   # (we already fixed permutation)
+
+#   # objectives
+#   optimization_metrics: [energy, delay]
+
+#   # bookkeeping
+#   num_best_mappings: 20
+#   live_status_delay: 5
+
+#   # parallel threads
+#   parallelism: 4
