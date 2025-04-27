@@ -149,3 +149,5 @@ docker-compose.yaml
 **/.jupyter
 **/.bash_history
 **/.config/
+
+.DS_Store

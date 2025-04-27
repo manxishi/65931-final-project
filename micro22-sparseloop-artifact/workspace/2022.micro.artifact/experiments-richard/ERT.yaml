@@ -50,10 +50,10 @@ ERT:
     actions:
     - name: read
       arguments: null
-      energy: 1
+      energy: 512
     - name: write
       arguments: null
-      energy: 1
+      energy: 512
     - name: idle
       arguments: null
       energy: 0

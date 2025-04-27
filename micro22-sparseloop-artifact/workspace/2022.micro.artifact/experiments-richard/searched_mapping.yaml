@@ -2,20 +2,19 @@ mapping:
   - target: reg
     type: datatype
     keep:
-      - Outputs
+      - Inputs
     bypass:
       - Weights
-      - Inputs
+      - Outputs
     stream:
       []
   - target: psum_spad
     type: datatype
     keep:
-      []
+      - Outputs
     bypass:
       - Weights
       - Inputs
-      - Outputs
     stream:
       []
   - target: weight_spad
@@ -52,21 +51,21 @@ mapping:
       - Outputs
   - target: reg
     type: temporal
+    factors: R1 E1 C1 M8 N1
+    permutation: MRECN
+  - target: psum_spad
+    type: temporal
+    factors: R1 E2 C1 M2 N1
+    permutation: EMRCN
+  - target: weight_spad
+    type: temporal
     factors: R1 E1 C64 M1 N1
     permutation: CREMN
-  - target: psum_spad
+  - target: iact_spad
+    type: temporal
+    factors: R1 E1 C1 M4 N1
+    permutation: MRECN
+  - target: BackingStorage
     type: temporal
     factors: R1 E16 C1 M1 N1
     permutation: ERCMN
-  - target: weight_spad
-    type: temporal
-    factors: R1 E1 C1 M2 N1
-    permutation: MRECN
-  - target: iact_spad
-    type: temporal
-    factors: R1 E2 C1 M1 N1
-    permutation: ERCMN
-  - target: BackingStorage
-    type: temporal
-    factors: R1 E1 C1 M32 N1
-    permutation: MRECN

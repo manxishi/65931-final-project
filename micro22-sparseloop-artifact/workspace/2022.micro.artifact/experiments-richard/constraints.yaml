@@ -1,43 +1,47 @@
 architecture_constraints:
+  targets:
+  # -------------------- DRAM (BackingStorage) --------------------
+  # Temporal: only split the filter-width (R) between DRAM and lower
+  - target:           BackingStorage
+    type:             bypass
+    bypass: [Inputs, Outputs, Weights]
 
-  # FANOUT constraint to avoid over-broadcasting
-  fanout:
-    type: uniform
-    value: 16  # reasonable upper limit for shared buses or unicast loads
 
-  # UTILIZATION constraint for compute units
-  utilization:
-    type: compute
-    target: MAC
-    min: 0.3  # skip mappings that use less than 30% of MACs
 
-  # MAX SPATIAL SPLITS — limit unrolling explosion
-  spatial_splits:
-    type: max
-    value: 3  # allow up to 3 levels of spatial unrolling (e.g., E, F, G)
+  # -------------------- Input-activation SRAM --------------------
+  - bypass:
+    - Weights
+    - Outputs
+    keep:
+    - Inputs
+    target:           iact_spad
+    type:             bypass
 
-  # MAX PARALLELISM per level
-  max_parallelism:
-    PE:
-      Inputs: 64
-      Weights: 64
-      Outputs: 64
+  # -------------------- Weight SRAM ------------------------------
+  - bypass:
+    - Inputs
+    - Outputs
+    keep:
+    - Weights
+    target:           weight_spad
+    type:             bypass
 
-  # MAX TEMPORAL DEPTH — controls how many nested temporal loops are allowed
-  temporal_loops:
-    max_per_operand:
-      Inputs: 4
-      Weights: 4
-      Outputs: 4
+  # -------------------- Partial-sum SRAM -------------------------
+  - bypass:
+    - Inputs
+    - Weights
+    keep:
+    - Outputs
+    target:           psum_spad
+    type:             bypass
 
-  # STORAGE LEVEL CONSTRAINTS (optional, skip if not needed)
-  storage:
-    iact_spad:
-      Inputs:
-        max_temporal_reuse: 128  # limit how many times to reuse data temporally
-    weight_spad:
-      Weights:
-        max_temporal_reuse: 128
-    psum_spad:
-      Outputs:
-        max_temporal_reuse: 256
+  # -------------------- Register file at the MAC -----------------
+    target:           reg
+    type:             temporal
+  - bypass:
+    - Weights
+    - Outputs
+    keep:
+    - Inputs
+    target:           reg
+    type:             bypass
