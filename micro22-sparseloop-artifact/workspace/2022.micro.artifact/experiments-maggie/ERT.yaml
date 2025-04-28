@@ -1,141 +1,86 @@
 ERT:
   version: 0.3
   tables:
-  - name: eyeriss_v2_PE.PE.psum_spad
-    actions:
-    - name: read
-      arguments:
-        address_delta: 0
-        data_delta: 0
-      energy: 1.0e-05
-    - name: read
-      arguments:
-        address_delta: 0
-        data_delta: 1
-      energy: 0.38169
-    - name: read
-      arguments:
-        address_delta: 1
-        data_delta: 0
-      energy: 0.16358
-    - name: read
-      arguments:
-        address_delta: 1
-        data_delta: 1
-      energy: 0.54526
-    - name: write
-      arguments:
-        address_delta: 0
-        data_delta: 0
-      energy: 1.0e-05
-    - name: write
-      arguments:
-        address_delta: 0
-        data_delta: 1
-      energy: 0.50265
-    - name: write
-      arguments:
-        address_delta: 1
-        data_delta: 0
-      energy: 0.21542
-    - name: write
-      arguments:
-        address_delta: 1
-        data_delta: 1
-      energy: 0.71807
-    - name: idle
-      arguments: null
-      energy: 1.0e-05
-  - name: eyeriss_v2_PE.BackingStorage
+  - name: system.PE[0..191].BackingStorage
     actions:
     - name: read
       arguments: null
-      energy: 512
+      energy: 998.4
     - name: write
       arguments: null
-      energy: 512
+      energy: 998.4
     - name: idle
       arguments: null
       energy: 0
-  - name: eyeriss_v2_PE.PE.iact_spad
+  - name: system.PE[0..191].iact_spad
     actions:
     - name: write
       arguments: null
-      energy: 0.13003
+      energy: 3.94226
     - name: read
       arguments: null
-      energy: 0.13003
+      energy: 6.01447
     - name: gated_write
       arguments: null
-      energy: 0.0032
+      energy: 0.00595
     - name: gated_read
       arguments: null
-      energy: 0.0032
-    - name: metadata_read
+      energy: 0.00595
+    - name: idle
       arguments: null
-      energy: 0.14934
-    - name: metadata_write
-      arguments: null
-      energy: 0.14934
-    - name: gated_metadata_read
-      arguments: null
-      energy: 0.00195
-    - name: gated_metadata_write
-      arguments: null
-      energy: 0.00195
-  - name: eyeriss_v2_PE.PE.weight_spad
+      energy: 0.00626
+  - name: system.PE[0..191].weight_spad
     actions:
     - name: write
       arguments: null
-      energy: 0.59359
+      energy: 3.84992
     - name: read
       arguments: null
-      energy: 0.53321
+      energy: 5.80557
     - name: gated_write
       arguments: null
-      energy: 1.0e-05
+      energy: 0.00595
     - name: gated_read
       arguments: null
-      energy: 1.0e-05
-    - name: metadata_read
+      energy: 0.00595
+    - name: idle
       arguments: null
-      energy: 0.47678
-    - name: metadata_write
-      arguments: null
-      energy: 0.51919
-    - name: gated_metadata_read
-      arguments: null
-      energy: 1.0e-05
-    - name: gated_metadata_write
-      arguments: null
-      energy: 1.0e-05
-  - name: eyeriss_v2_PE.PE.reg
+      energy: 0.00623
+  - name: system.PE[0..191].psum_spad
     actions:
     - name: write
       arguments: null
-      energy: 0.072
+      energy: 3.84992
     - name: read
       arguments: null
-      energy: 0.072
+      energy: 5.80557
     - name: gated_write
       arguments: null
-      energy: 0.00296
+      energy: 0.00595
     - name: gated_read
       arguments: null
-      energy: 0.00296
-    - name: metadata_read
+      energy: 0.00595
+    - name: idle
       arguments: null
-      energy: 0
-    - name: metadata_write
+      energy: 0.00623
+  - name: system.PE[0..191].reg
+    actions:
+    - name: write
       arguments: null
-      energy: 0
-    - name: gated_metadata_read
+      energy: 3.84992
+    - name: read
       arguments: null
-      energy: 0
-    - name: gated_metadata_write
+      energy: 5.80557
+    - name: gated_write
       arguments: null
-      energy: 0
-  - name: eyeriss_v2_PE.PE.MAC
+      energy: 0.00595
+    - name: gated_read
+      arguments: null
+      energy: 0.00595
+    - name: idle
+      arguments: null
+      energy: 0.00623
+  - name: system.PE[0..191].MAC
     actions:
     - name: mac_random
       arguments: null

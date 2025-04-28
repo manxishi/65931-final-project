@@ -60,9 +60,13 @@ mapper:
   search-size: 256
   victory-condition: 1
   timeout: 600  # seconds (10 minutes max)
-
+  diagnostics: True
+  max-permutations-per-factorization: 2
   algorithm: random-pruned
   num-threads: 16
+  max-tiles-per-factorization: 2
+  max-permutations-per-factorization: 2
+  
 
   log-interval: 1   # print progress after every valid mapping
 

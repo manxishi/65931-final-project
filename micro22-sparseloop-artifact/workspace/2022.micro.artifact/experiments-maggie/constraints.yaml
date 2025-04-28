@@ -291,8 +291,8 @@ constraints:
         bypass: [Inputs, Weights]
         keep: [Outputs]
 
-      # -------------------- Register file at the MAC -----------------
-      - target: reg
-        type: temporal
-        bypass: [Weights, Outputs]
-        keep: [Inputs]
+#       # -------------------- Register file at the MAC -----------------
+#       - target: reg
+#         type: temporal
+#         bypass: [Weights, Outputs]
+#         keep: [Inputs]
