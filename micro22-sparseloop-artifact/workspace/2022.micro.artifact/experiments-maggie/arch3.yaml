@@ -200,95 +200,199 @@
 #                 datawidth: 8
 #                 spatial: False
 #                 instances: 1
+# architecture:
+#   version: 0.2
+#   subtree:
+#     - name: system
+#       attributes:
+#         technology: 45nm
+#         meshX: 8    # 8 columns
+#         meshY: 24   # 24 rows → 8 × 24 = 192 PEs
+#       subtree:
+#         - name: PE[0..191]
+#           attributes:
+#             meshX: 1
+#             meshY: 1
+#           local:
+#             - name: BackingStorage
+#               class: DRAM
+#               subclass: DRAM
+#               attributes:
+#                 spatial: True
+#                 instances: 1
+#                 type: HBM2
+#                 width: 256
+#                 block-size: 16
+#                 word-bits: 16
+#                 metadata_storage_width: 16
+
+#             - name: iact_spad
+#               class: smartbuffer
+#               attributes:
+#                 spatial: True
+#                 instances: 1
+#                 data_storage_depth: 4096
+#                 data_storage_width: 17
+#                 n_banks: 1
+#                 datawidth: 17
+#                 read_bandwidth: 2
+#                 write_bandwidth: 2
+#                 word-bits: 17
+#                 metadata_storage_width: 17
+#                 metadata_storage_depth: 0
+
+#             - name: weight_spad
+#               class: smartbuffer
+#               attributes:
+#                 spatial: True
+#                 instances: 1
+#                 data_storage_depth: 4096
+#                 data_storage_width: 16
+#                 n_banks: 1
+#                 datawidth: 16
+#                 read_bandwidth: 2
+#                 write_bandwidth: 2
+#                 word-bits: 16
+#                 metadata_storage_width: 16
+#                 metadata_storage_depth: 0
+
+#             - name: psum_spad
+#               class: smartbuffer
+#               attributes:
+#                 spatial: True
+#                 instances: 1
+#                 data_storage_depth: 4096
+#                 data_storage_width: 16
+#                 n_banks: 1
+#                 datawidth: 16
+#                 read_bandwidth: 2
+#                 write_bandwidth: 2
+#                 word-bits: 16
+#                 metadata_storage_width: 16
+#                 metadata_storage_depth: 0
+
+#             - name: reg
+#               class: smartbuffer
+#               attributes:
+#                 spatial: True
+#                 instances: 1
+#                 data_storage_depth: 4096
+#                 data_storage_width: 16
+#                 n_banks: 1
+#                 datawidth: 16
+#                 read_bandwidth: 2
+#                 write_bandwidth: 2
+#                 word-bits: 16
+#                 metadata_storage_width: 16
+#                 metadata_storage_depth: 0
+
+#             - name: MAC
+#               class: Imac
+#               attributes:
+#                 spatial: True
+#                 instances: 1
+#                 datawidth: 8
 architecture:
   version: 0.2
+
   subtree:
-    - name: system
+  - name: system
+    attributes:
+      technology: 45nm
+      meshX: 8        # 8 columns
+      meshY: 24       # 24 rows → 192 PEs
+
+    # ------------------------- #
+    # Global (shared) DRAM tier #
+    # ------------------------- #
+    local:
+    - name: BackingStorage      # one DRAM for the whole chip
+      class: DRAM
+      subclass: DRAM
       attributes:
-        technology: 45nm
-        meshX: 8    # 8 columns
-        meshY: 24   # 24 rows → 8 × 24 = 192 PEs
-      subtree:
-        - name: PE[0..191]
-          attributes:
-            meshX: 1
-            meshY: 1
-          local:
-            - name: BackingStorage
-              class: DRAM
-              subclass: DRAM
-              attributes:
-                spatial: True
-                instances: 1
-                type: HBM2
-                width: 256
-                block-size: 16
-                word-bits: 16
-                metadata_storage_width: 16
+        spatial: False          # NOT replicated across PEs
+        instances: 1
+        type: HBM2
+        width: 256
+        block-size: 16
+        word-bits: 16
+        metadata_storage_width: 16
 
-            - name: iact_spad
-              class: smartbuffer
-              attributes:
-                spatial: True
-                instances: 1
-                data_storage_depth: 4096
-                data_storage_width: 17
-                n_banks: 1
-                datawidth: 17
-                read_bandwidth: 2
-                write_bandwidth: 2
-                word-bits: 17
-                metadata_storage_width: 17
-                metadata_storage_depth: 0
+    # ------------------------- #
+    # Processing-element array  #
+    # ------------------------- #
+    subtree:
+    - name: PE[0..191]
+      attributes:
+        meshX: 1
+        meshY: 1
 
-            - name: weight_spad
-              class: smartbuffer
-              attributes:
-                spatial: True
-                instances: 1
-                data_storage_depth: 4096
-                data_storage_width: 16
-                n_banks: 1
-                datawidth: 16
-                read_bandwidth: 2
-                write_bandwidth: 2
-                word-bits: 16
-                metadata_storage_width: 16
-                metadata_storage_depth: 0
+      local:
+      # ----- scratchpads ----- #
+      - name: iact_spad
+        class: smartbuffer
+        attributes:
+          spatial: True
+          instances: 1
+          data_storage_depth: 4096
+          data_storage_width: 17
+          n_banks: 1
+          datawidth: 17
+          read_bandwidth: 2
+          write_bandwidth: 2
+          word-bits: 17
+          metadata_storage_width: 17
+          metadata_storage_depth: 0
 
-            - name: psum_spad
-              class: smartbuffer
-              attributes:
-                spatial: True
-                instances: 1
-                data_storage_depth: 4096
-                data_storage_width: 16
-                n_banks: 1
-                datawidth: 16
-                read_bandwidth: 2
-                write_bandwidth: 2
-                word-bits: 16
-                metadata_storage_width: 16
-                metadata_storage_depth: 0
+      - name: weight_spad
+        class: smartbuffer
+        attributes:
+          spatial: True
+          instances: 1
+          data_storage_depth: 4096
+          data_storage_width: 16
+          n_banks: 1
+          datawidth: 16
+          read_bandwidth: 2
+          write_bandwidth: 2
+          word-bits: 16
+          metadata_storage_width: 16
+          metadata_storage_depth: 0
 
-            - name: reg
-              class: smartbuffer
-              attributes:
-                spatial: True
-                instances: 1
-                data_storage_depth: 4096
-                data_storage_width: 16
-                n_banks: 1
-                datawidth: 16
-                read_bandwidth: 2
-                write_bandwidth: 2
-                word-bits: 16
-                metadata_storage_width: 16
-                metadata_storage_depth: 0
+      - name: psum_spad
+        class: smartbuffer
+        attributes:
+          spatial: True
+          instances: 1
+          data_storage_depth: 4096
+          data_storage_width: 16
+          n_banks: 1
+          datawidth: 16
+          read_bandwidth: 2
+          write_bandwidth: 2
+          word-bits: 16
+          metadata_storage_width: 16
+          metadata_storage_depth: 0
 
-            - name: MAC
-              class: Imac
-              attributes:
-                spatial: True
-                instances: 1
-                datawidth: 8
+      - name: reg
+        class: smartbuffer
+        attributes:
+          spatial: True
+          instances: 1
+          data_storage_depth: 4096
+          data_storage_width: 16
+          n_banks: 1
+          datawidth: 16
+          read_bandwidth: 2
+          write_bandwidth: 2
+          word-bits: 16
+          metadata_storage_width: 16
+          metadata_storage_depth: 0
+
+      # -------- compute -------- #
+      - name: MAC
+        class: Imac
+        attributes:
+          spatial: True
+          instances: 1
+          datawidth: 8

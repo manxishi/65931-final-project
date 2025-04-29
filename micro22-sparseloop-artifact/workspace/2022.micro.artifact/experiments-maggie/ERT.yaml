@@ -1,7 +1,7 @@
 ERT:
   version: 0.3
   tables:
-  - name: system.PE[0..191].BackingStorage
+  - name: system.BackingStorage
     actions:
     - name: read
       arguments: null
