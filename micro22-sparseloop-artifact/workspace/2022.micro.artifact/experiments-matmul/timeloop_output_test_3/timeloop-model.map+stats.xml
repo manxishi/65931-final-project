@@ -14,10 +14,10 @@
 							<level_name>MAC</level_name>
 						</LevelSpecs>
 						<instances class_id="8" tracking_level="0" version="0">
-							<t_>1</t_>
+							<t_>16</t_>
 						</instances>
 						<meshX>
-							<t_>1</t_>
+							<t_>16</t_>
 						</meshX>
 						<meshY>
 							<t_>1</t_>
@@ -26,34 +26,27 @@
 							<t_>8</t_>
 						</word_bits>
 					</specs_>
-					<energy_>3.67525887999999977e+04</energy_>
+					<energy_>8.88677719999999908e+02</energy_>
 					<area_>3.32250000000000000e+02</area_>
-					<cycles_>65536</cycles_>
-					<utilized_instances_>1</utilized_instances_>
-					<avg_utilized_instances_>1.00000000000000000e+00</avg_utilized_instances_>
-					<algorithmic_computes_>65536</algorithmic_computes_>
-					<random_computes_>65536</random_computes_>
+					<cycles_>5</cycles_>
+					<utilized_instances_>2</utilized_instances_>
+					<avg_utilized_instances_>2.00000000000000000e+00</avg_utilized_instances_>
+					<algorithmic_computes_>268435456</algorithmic_computes_>
+					<random_computes_>10</random_computes_>
 					<gated_computes_>0</gated_computes_>
-					<skipped_computes_>0</skipped_computes_>
+					<skipped_computes_>49114</skipped_computes_>
 				</px>
 			</item>
 			<item>
 				<px class_id="9" class_name="model::BufferLevel" tracking_level="1" version="0" object_id="_1">
 					<Level></Level>
 					<subnest_ class_id="10" tracking_level="0" version="0">
-						<count>2</count>
+						<count>1</count>
 						<item_version>0</item_version>
 						<item class_id="11" tracking_level="0" version="0">
 							<dimension>1</dimension>
 							<start>0</start>
 							<end>32</end>
-							<stride>1</stride>
-							<spacetime_dimension>0</spacetime_dimension>
-						</item>
-						<item>
-							<dimension>2</dimension>
-							<start>0</start>
-							<end>4</end>
 							<stride>1</stride>
 							<spacetime_dimension>0</spacetime_dimension>
 						</item>
@@ -84,10 +77,10 @@
 							<t_>1</t_>
 						</cluster_size>
 						<instances>
-							<t_>1</t_>
+							<t_>16</t_>
 						</instances>
 						<meshX>
-							<t_>1</t_>
+							<t_>16</t_>
 						</meshX>
 						<meshY>
 							<t_>1</t_>
@@ -116,7 +109,7 @@
 						<keep class_id="17" tracking_level="0" version="0">
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>1</item>
 								<item>0</item>
 							</PerDataSpace>
 						</keep>
@@ -130,35 +123,35 @@
 						<partition_size class_id="18" tracking_level="0" version="0">
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>8192</item>
 								<item>0</item>
 							</PerDataSpace>
 						</partition_size>
 						<utilized_capacity>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>1</item>
 								<item>0</item>
 							</PerDataSpace>
 						</utilized_capacity>
 						<utilized_instances class_id="19" tracking_level="0" version="0">
 							<PerDataSpace>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
+								<item>2.00000000000000000e+00</item>
+								<item>3.66210937500000000e-04</item>
+								<item>2.00000000000000000e+00</item>
 							</PerDataSpace>
 						</utilized_instances>
 						<utilized_clusters>
 							<PerDataSpace>
-								<item>1</item>
-								<item>1</item>
-								<item>1</item>
+								<item>2</item>
+								<item>2</item>
+								<item>2</item>
 							</PerDataSpace>
 						</utilized_clusters>
 						<reads>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>134217728</item>
 								<item>0</item>
 							</PerDataSpace>
 						</reads>
@@ -172,7 +165,7 @@
 						<fills>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>32768</item>
 								<item>0</item>
 							</PerDataSpace>
 						</fills>
@@ -193,7 +186,7 @@
 						<random_reads>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>134217728</item>
 								<item>0</item>
 							</PerDataSpace>
 						</random_reads>
@@ -214,7 +207,7 @@
 						<random_fills>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>32768</item>
 								<item>0</item>
 							</PerDataSpace>
 						</random_fills>
@@ -246,8 +239,14 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>1</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>134217728</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -262,8 +261,14 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>1</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -278,8 +283,14 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>1</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -294,8 +305,14 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>1</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>32768</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -310,8 +327,14 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>1</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -326,8 +349,14 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>1</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -342,8 +371,14 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>1</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -358,8 +393,14 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>1</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -374,8 +415,14 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>1</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -400,7 +447,7 @@
 						<address_generations>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>134250496</item>
 								<item>0</item>
 							</PerDataSpace>
 						</address_generations>
@@ -414,42 +461,42 @@
 						<shared_bandwidth>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>7.37460000000000036e+03</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</shared_bandwidth>
 						<read_bandwidth>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>7.37280000000000018e+03</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</read_bandwidth>
 						<write_bandwidth>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>1.80000000000000004e+00</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</write_bandwidth>
 						<energy_per_algorithmic_access>
 							<PerDataSpace>
 								<item>nan</item>
-								<item>nan</item>
+								<item>7.19999999999999946e-02</item>
 								<item>nan</item>
 							</PerDataSpace>
 						</energy_per_algorithmic_access>
 						<energy_per_access>
 							<PerDataSpace>
 								<item>nan</item>
-								<item>nan</item>
+								<item>7.19999999999999946e-02</item>
 								<item>nan</item>
 							</PerDataSpace>
 						</energy_per_access>
 						<energy>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>9.66603571199999936e+06</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</energy>
@@ -467,26 +514,26 @@
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</addr_gen_energy>
-						<cycles>65536</cycles>
+						<cycles>5</cycles>
 						<slowdown>1.00000000000000000e+00</slowdown>
 						<format_shared_bandwidth_ratio>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>3.33333333333333315e-01</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</format_shared_bandwidth_ratio>
 						<format_read_bandwidth_ratio>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>3.33333333333333315e-01</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</format_read_bandwidth_ratio>
 						<format_write_bandwidth_ratio>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>3.33333333333333315e-01</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</format_write_bandwidth_ratio>
@@ -497,19 +544,12 @@
 				<px class_id_reference="9" object_id="_2">
 					<Level></Level>
 					<subnest_>
-						<count>2</count>
+						<count>1</count>
 						<item_version>0</item_version>
-						<item>
-							<dimension>1</dimension>
-							<start>0</start>
-							<end>4</end>
-							<stride>1</stride>
-							<spacetime_dimension>0</spacetime_dimension>
-						</item>
 						<item>
 							<dimension>2</dimension>
 							<start>0</start>
-							<end>8</end>
+							<end>1</end>
 							<stride>1</stride>
 							<spacetime_dimension>0</spacetime_dimension>
 						</item>
@@ -540,10 +580,10 @@
 							<t_>1</t_>
 						</cluster_size>
 						<instances>
-							<t_>1</t_>
+							<t_>16</t_>
 						</instances>
 						<meshX>
-							<t_>1</t_>
+							<t_>16</t_>
 						</meshX>
 						<meshY>
 							<t_>1</t_>
@@ -572,8 +612,8 @@
 						<keep>
 							<PerDataSpace>
 								<item>0</item>
-								<item>1</item>
 								<item>0</item>
+								<item>1</item>
 							</PerDataSpace>
 						</keep>
 						<streamed>
@@ -586,49 +626,49 @@
 						<partition_size>
 							<PerDataSpace>
 								<item>0</item>
-								<item>256</item>
 								<item>0</item>
+								<item>16384</item>
 							</PerDataSpace>
 						</partition_size>
 						<utilized_capacity>
 							<PerDataSpace>
 								<item>0</item>
-								<item>32</item>
 								<item>0</item>
+								<item>32</item>
 							</PerDataSpace>
 						</utilized_capacity>
 						<utilized_instances>
 							<PerDataSpace>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
+								<item>2.00000000000000000e+00</item>
+								<item>2.00000000000000000e+00</item>
+								<item>2.00000000000000000e+00</item>
 							</PerDataSpace>
 						</utilized_instances>
 						<utilized_clusters>
 							<PerDataSpace>
-								<item>1</item>
-								<item>1</item>
-								<item>1</item>
+								<item>2</item>
+								<item>2</item>
+								<item>2</item>
 							</PerDataSpace>
 						</utilized_clusters>
 						<reads>
 							<PerDataSpace>
 								<item>0</item>
-								<item>65536</item>
 								<item>0</item>
+								<item>134201344</item>
 							</PerDataSpace>
 						</reads>
 						<updates>
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>0</item>
+								<item>134217728</item>
 							</PerDataSpace>
 						</updates>
 						<fills>
 							<PerDataSpace>
 								<item>0</item>
-								<item>512</item>
+								<item>0</item>
 								<item>0</item>
 							</PerDataSpace>
 						</fills>
@@ -643,14 +683,14 @@
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>0</item>
+								<item>134201340</item>
 							</PerDataSpace>
 						</skipped_reads>
 						<random_reads>
 							<PerDataSpace>
 								<item>0</item>
-								<item>65536</item>
 								<item>0</item>
+								<item>4</item>
 							</PerDataSpace>
 						</random_reads>
 						<gated_fills>
@@ -670,7 +710,7 @@
 						<random_fills>
 							<PerDataSpace>
 								<item>0</item>
-								<item>512</item>
+								<item>0</item>
 								<item>0</item>
 							</PerDataSpace>
 						</random_fills>
@@ -685,14 +725,14 @@
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>0</item>
+								<item>134217723</item>
 							</PerDataSpace>
 						</skipped_updates>
 						<random_updates>
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>0</item>
+								<item>5</item>
 							</PerDataSpace>
 						</random_updates>
 						<random_format_reads>
@@ -856,57 +896,57 @@
 						<address_generations>
 							<PerDataSpace>
 								<item>0</item>
-								<item>66048</item>
 								<item>0</item>
+								<item>5</item>
 							</PerDataSpace>
 						</address_generations>
 						<temporal_reductions>
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>0</item>
+								<item>5</item>
 							</PerDataSpace>
 						</temporal_reductions>
 						<shared_bandwidth>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>1.00781250000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
+								<item>1.80000000000000004e+00</item>
 							</PerDataSpace>
 						</shared_bandwidth>
 						<read_bandwidth>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
+								<item>8.00000000000000044e-01</item>
 							</PerDataSpace>
 						</read_bandwidth>
 						<write_bandwidth>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>7.81250000000000000e-03</item>
 								<item>0.00000000000000000e+00</item>
+								<item>1.00000000000000000e+00</item>
 							</PerDataSpace>
 						</write_bandwidth>
 						<energy_per_algorithmic_access>
 							<PerDataSpace>
 								<item>nan</item>
-								<item>5.46599612403100732e-01</item>
 								<item>nan</item>
+								<item>1.00215010802213045e-05</item>
 							</PerDataSpace>
 						</energy_per_algorithmic_access>
 						<energy_per_access>
 							<PerDataSpace>
 								<item>nan</item>
-								<item>5.46599612403100732e-01</item>
 								<item>nan</item>
+								<item>2.98884668888888882e+02</item>
 							</PerDataSpace>
 						</energy_per_access>
 						<energy>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>3.61018111999999965e+04</item>
 								<item>0.00000000000000000e+00</item>
+								<item>2.68996201999999994e+03</item>
 							</PerDataSpace>
 						</energy>
 						<temporal_reduction_energy>
@@ -923,7 +963,7 @@
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</addr_gen_energy>
-						<cycles>65536</cycles>
+						<cycles>5</cycles>
 						<slowdown>1.00000000000000000e+00</slowdown>
 						<format_shared_bandwidth_ratio>
 							<PerDataSpace>
@@ -956,9 +996,9 @@
 						<count>1</count>
 						<item_version>0</item_version>
 						<item>
-							<dimension>2</dimension>
+							<dimension>1</dimension>
 							<start>0</start>
-							<end>4</end>
+							<end>2</end>
 							<stride>1</stride>
 							<spacetime_dimension>0</spacetime_dimension>
 						</item>
@@ -989,10 +1029,10 @@
 							<t_>1</t_>
 						</cluster_size>
 						<instances>
-							<t_>1</t_>
+							<t_>16</t_>
 						</instances>
 						<meshX>
-							<t_>1</t_>
+							<t_>16</t_>
 						</meshX>
 						<meshY>
 							<t_>1</t_>
@@ -1020,9 +1060,9 @@
 					<stats_>
 						<keep>
 							<PerDataSpace>
-								<item>0</item>
-								<item>0</item>
 								<item>1</item>
+								<item>0</item>
+								<item>0</item>
 							</PerDataSpace>
 						</keep>
 						<streamed>
@@ -1034,51 +1074,51 @@
 						</streamed>
 						<partition_size>
 							<PerDataSpace>
+								<item>134217728</item>
 								<item>0</item>
 								<item>0</item>
-								<item>256</item>
 							</PerDataSpace>
 						</partition_size>
 						<utilized_capacity>
 							<PerDataSpace>
+								<item>64</item>
 								<item>0</item>
 								<item>0</item>
-								<item>128</item>
 							</PerDataSpace>
 						</utilized_capacity>
 						<utilized_instances>
 							<PerDataSpace>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
+								<item>2.00000000000000000e+00</item>
+								<item>2.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</utilized_instances>
 						<utilized_clusters>
 							<PerDataSpace>
-								<item>1</item>
-								<item>1</item>
-								<item>1</item>
+								<item>2</item>
+								<item>2</item>
+								<item>2</item>
 							</PerDataSpace>
 						</utilized_clusters>
 						<reads>
 							<PerDataSpace>
+								<item>134217728</item>
 								<item>0</item>
 								<item>0</item>
-								<item>65280</item>
 							</PerDataSpace>
 						</reads>
 						<updates>
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>65536</item>
+								<item>0</item>
 							</PerDataSpace>
 						</updates>
 						<fills>
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>256</item>
+								<item>0</item>
 							</PerDataSpace>
 						</fills>
 						<gated_reads>
@@ -1090,16 +1130,16 @@
 						</gated_reads>
 						<skipped_reads>
 							<PerDataSpace>
-								<item>0</item>
+								<item>24571</item>
 								<item>0</item>
 								<item>0</item>
 							</PerDataSpace>
 						</skipped_reads>
 						<random_reads>
 							<PerDataSpace>
+								<item>5</item>
 								<item>0</item>
 								<item>0</item>
-								<item>65280</item>
 							</PerDataSpace>
 						</random_reads>
 						<gated_fills>
@@ -1120,7 +1160,7 @@
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>256</item>
+								<item>0</item>
 							</PerDataSpace>
 						</random_fills>
 						<gated_updates>
@@ -1141,14 +1181,26 @@
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>65536</item>
+								<item>0</item>
 							</PerDataSpace>
 						</random_updates>
 						<random_format_reads>
 							<PerDataSpace>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>5</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1163,8 +1215,20 @@
 						<gated_format_reads>
 							<PerDataSpace>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1179,8 +1243,20 @@
 						<skipped_format_reads>
 							<PerDataSpace>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>24572</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1195,8 +1271,20 @@
 						<random_format_fills>
 							<PerDataSpace>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1211,8 +1299,20 @@
 						<gated_format_fills>
 							<PerDataSpace>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1227,8 +1327,20 @@
 						<skipped_format_fills>
 							<PerDataSpace>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1243,8 +1355,20 @@
 						<random_format_updates>
 							<PerDataSpace>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1259,8 +1383,20 @@
 						<gated_format_updates>
 							<PerDataSpace>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1275,8 +1411,20 @@
 						<skipped_format_updates>
 							<PerDataSpace>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1304,58 +1452,58 @@
 						</compression_counts>
 						<address_generations>
 							<PerDataSpace>
+								<item>5</item>
 								<item>0</item>
 								<item>0</item>
-								<item>65792</item>
 							</PerDataSpace>
 						</address_generations>
 						<temporal_reductions>
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>65280</item>
+								<item>0</item>
 							</PerDataSpace>
 						</temporal_reductions>
 						<shared_bandwidth>
 							<PerDataSpace>
+								<item>1.39999999999999991e+00</item>
 								<item>0.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
-								<item>2.00000000000000000e+00</item>
 							</PerDataSpace>
 						</shared_bandwidth>
 						<read_bandwidth>
 							<PerDataSpace>
+								<item>1.39999999999999991e+00</item>
 								<item>0.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
-								<item>9.96093750000000000e-01</item>
 							</PerDataSpace>
 						</read_bandwidth>
 						<write_bandwidth>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
-								<item>1.00390625000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</write_bandwidth>
 						<energy_per_algorithmic_access>
 							<PerDataSpace>
+								<item>4.36757592856883980e-05</item>
 								<item>nan</item>
-								<item>nan</item>
-								<item>5.63517929687499919e-01</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</energy_per_algorithmic_access>
 						<energy_per_access>
 							<PerDataSpace>
+								<item>1.17241223599999989e+03</item>
 								<item>nan</item>
-								<item>nan</item>
-								<item>5.63517929687499919e-01</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</energy_per_access>
 						<energy>
 							<PerDataSpace>
+								<item>5.86206117999999969e+03</item>
 								<item>0.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
-								<item>7.38614220799999894e+04</item>
 							</PerDataSpace>
 						</energy>
 						<temporal_reduction_energy>
@@ -1372,18 +1520,18 @@
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</addr_gen_energy>
-						<cycles>65536</cycles>
+						<cycles>5</cycles>
 						<slowdown>1.00000000000000000e+00</slowdown>
 						<format_shared_bandwidth_ratio>
 							<PerDataSpace>
-								<item>0.00000000000000000e+00</item>
+								<item>2.85714285714285698e-01</item>
 								<item>0.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</format_shared_bandwidth_ratio>
 						<format_read_bandwidth_ratio>
 							<PerDataSpace>
-								<item>0.00000000000000000e+00</item>
+								<item>2.85714285714285698e-01</item>
 								<item>0.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
@@ -1402,22 +1550,8 @@
 				<px class_id_reference="9" object_id="_4">
 					<Level></Level>
 					<subnest_>
-						<count>2</count>
+						<count>0</count>
 						<item_version>0</item_version>
-						<item>
-							<dimension>2</dimension>
-							<start>0</start>
-							<end>2</end>
-							<stride>1</stride>
-							<spacetime_dimension>0</spacetime_dimension>
-						</item>
-						<item>
-							<dimension>1</dimension>
-							<start>0</start>
-							<end>2</end>
-							<stride>1</stride>
-							<spacetime_dimension>0</spacetime_dimension>
-						</item>
 					</subnest_>
 					<specs_>
 						<LevelSpecs>
@@ -1445,10 +1579,10 @@
 							<t_>1</t_>
 						</cluster_size>
 						<instances>
-							<t_>1</t_>
+							<t_>16</t_>
 						</instances>
 						<meshX>
-							<t_>1</t_>
+							<t_>16</t_>
 						</meshX>
 						<meshY>
 							<t_>1</t_>
@@ -1477,7 +1611,7 @@
 						<keep>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>1</item>
 								<item>0</item>
 							</PerDataSpace>
 						</keep>
@@ -1491,35 +1625,35 @@
 						<partition_size>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>8192</item>
 								<item>0</item>
 							</PerDataSpace>
 						</partition_size>
 						<utilized_capacity>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>3</item>
 								<item>0</item>
 							</PerDataSpace>
 						</utilized_capacity>
 						<utilized_instances>
 							<PerDataSpace>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
+								<item>2.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</utilized_instances>
 						<utilized_clusters>
 							<PerDataSpace>
-								<item>1</item>
-								<item>1</item>
-								<item>1</item>
+								<item>2</item>
+								<item>2</item>
+								<item>2</item>
 							</PerDataSpace>
 						</utilized_clusters>
 						<reads>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>32768</item>
 								<item>0</item>
 							</PerDataSpace>
 						</reads>
@@ -1554,7 +1688,7 @@
 						<random_reads>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>6</item>
 								<item>0</item>
 							</PerDataSpace>
 						</random_reads>
@@ -1607,8 +1741,20 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>6</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>54</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1623,8 +1769,20 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1639,8 +1797,20 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1655,8 +1825,20 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1671,8 +1853,20 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1687,8 +1881,20 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1703,8 +1909,20 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1719,8 +1937,20 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1735,8 +1965,20 @@
 									<item_version>0</item_version>
 								</item>
 								<item>
-									<count>0</count>
+									<count>2</count>
 									<item_version>0</item_version>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
+									<item>
+										<count>2</count>
+										<item_version>0</item_version>
+										<item>0</item>
+										<item>0</item>
+									</item>
 								</item>
 								<item>
 									<count>0</count>
@@ -1761,7 +2003,7 @@
 						<address_generations>
 							<PerDataSpace>
 								<item>0</item>
-								<item>0</item>
+								<item>6</item>
 								<item>0</item>
 							</PerDataSpace>
 						</address_generations>
@@ -1775,14 +2017,14 @@
 						<shared_bandwidth>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>7.20000000000000018e+00</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</shared_bandwidth>
 						<read_bandwidth>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>7.20000000000000018e+00</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</read_bandwidth>
@@ -1795,22 +2037,22 @@
 						</write_bandwidth>
 						<energy_per_algorithmic_access>
 							<PerDataSpace>
-								<item>nan</item>
-								<item>nan</item>
-								<item>nan</item>
+								<item>0.00000000000000000e+00</item>
+								<item>2.97258911132812487e-04</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</energy_per_algorithmic_access>
 						<energy_per_access>
 							<PerDataSpace>
-								<item>nan</item>
-								<item>nan</item>
-								<item>nan</item>
+								<item>0.00000000000000000e+00</item>
+								<item>1.62342999999999993e+00</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</energy_per_access>
 						<energy>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>9.74057999999999957e+00</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</energy>
@@ -1828,19 +2070,19 @@
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</addr_gen_energy>
-						<cycles>65536</cycles>
+						<cycles>5</cycles>
 						<slowdown>1.00000000000000000e+00</slowdown>
 						<format_shared_bandwidth_ratio>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>8.33333333333333370e-01</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</format_shared_bandwidth_ratio>
 						<format_read_bandwidth_ratio>
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
+								<item>8.33333333333333370e-01</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</format_read_bandwidth_ratio>
@@ -1858,15 +2100,8 @@
 				<px class_id_reference="9" object_id="_5">
 					<Level></Level>
 					<subnest_>
-						<count>1</count>
+						<count>0</count>
 						<item_version>0</item_version>
-						<item>
-							<dimension>2</dimension>
-							<start>0</start>
-							<end>1</end>
-							<stride>1</stride>
-							<spacetime_dimension>0</spacetime_dimension>
-						</item>
 					</subnest_>
 					<specs_>
 						<LevelSpecs>
@@ -1880,13 +2115,13 @@
 						</technology>
 						<size></size>
 						<word_bits>
-							<t_>8</t_>
+							<t_>16</t_>
 						</word_bits>
 						<addr_gen_bits>
-							<t_>14</t_>
+							<t_>0</t_>
 						</addr_gen_bits>
 						<block_size>
-							<t_>8</t_>
+							<t_>16</t_>
 						</block_size>
 						<cluster_size>
 							<t_>1</t_>
@@ -1923,9 +2158,9 @@
 					<stats_>
 						<keep>
 							<PerDataSpace>
-								<item>1</item>
-								<item>1</item>
-								<item>1</item>
+								<item>0</item>
+								<item>0</item>
+								<item>0</item>
 							</PerDataSpace>
 						</keep>
 						<streamed>
@@ -1937,23 +2172,23 @@
 						</streamed>
 						<partition_size>
 							<PerDataSpace>
-								<item>65536</item>
-								<item>256</item>
-								<item>256</item>
+								<item>0</item>
+								<item>0</item>
+								<item>0</item>
 							</PerDataSpace>
 						</partition_size>
 						<utilized_capacity>
 							<PerDataSpace>
-								<item>65536</item>
-								<item>256</item>
-								<item>256</item>
+								<item>0</item>
+								<item>0</item>
+								<item>0</item>
 							</PerDataSpace>
 						</utilized_capacity>
 						<utilized_instances>
 							<PerDataSpace>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
-								<item>1.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</utilized_instances>
 						<utilized_clusters>
@@ -1965,8 +2200,8 @@
 						</utilized_clusters>
 						<reads>
 							<PerDataSpace>
-								<item>65536</item>
-								<item>512</item>
+								<item>0</item>
+								<item>0</item>
 								<item>0</item>
 							</PerDataSpace>
 						</reads>
@@ -1974,7 +2209,7 @@
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>256</item>
+								<item>0</item>
 							</PerDataSpace>
 						</updates>
 						<fills>
@@ -2000,8 +2235,8 @@
 						</skipped_reads>
 						<random_reads>
 							<PerDataSpace>
-								<item>65536</item>
-								<item>512</item>
+								<item>0</item>
+								<item>0</item>
 								<item>0</item>
 							</PerDataSpace>
 						</random_reads>
@@ -2044,7 +2279,7 @@
 							<PerDataSpace>
 								<item>0</item>
 								<item>0</item>
-								<item>256</item>
+								<item>0</item>
 							</PerDataSpace>
 						</random_updates>
 						<random_format_reads>
@@ -2207,9 +2442,9 @@
 						</compression_counts>
 						<address_generations>
 							<PerDataSpace>
-								<item>65536</item>
-								<item>512</item>
-								<item>256</item>
+								<item>0</item>
+								<item>0</item>
+								<item>0</item>
 							</PerDataSpace>
 						</address_generations>
 						<temporal_reductions>
@@ -2221,15 +2456,15 @@
 						</temporal_reductions>
 						<shared_bandwidth>
 							<PerDataSpace>
-								<item>1.00000000000000000e+00</item>
-								<item>7.81250000000000000e-03</item>
-								<item>3.90625000000000000e-03</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</shared_bandwidth>
 						<read_bandwidth>
 							<PerDataSpace>
-								<item>1.00000000000000000e+00</item>
-								<item>7.81250000000000000e-03</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</read_bandwidth>
@@ -2237,28 +2472,28 @@
 							<PerDataSpace>
 								<item>0.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
-								<item>3.90625000000000000e-03</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</write_bandwidth>
 						<energy_per_algorithmic_access>
 							<PerDataSpace>
-								<item>1.24799999999999997e+02</item>
-								<item>1.24799999999999997e+02</item>
-								<item>1.24799999999999997e+02</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</energy_per_algorithmic_access>
 						<energy_per_access>
 							<PerDataSpace>
-								<item>1.24799999999999997e+02</item>
-								<item>1.24799999999999997e+02</item>
-								<item>1.24799999999999997e+02</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</energy_per_access>
 						<energy>
 							<PerDataSpace>
-								<item>8.17889279999999981e+06</item>
-								<item>6.38975999999999985e+04</item>
-								<item>3.19487999999999993e+04</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
+								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</energy>
 						<temporal_reduction_energy>
@@ -2275,7 +2510,7 @@
 								<item>0.00000000000000000e+00</item>
 							</PerDataSpace>
 						</addr_gen_energy>
-						<cycles>65536</cycles>
+						<cycles>5</cycles>
 						<slowdown>1.00000000000000000e+00</slowdown>
 						<format_shared_bandwidth_ratio>
 							<PerDataSpace>
@@ -2302,20 +2537,20 @@
 				</px>
 			</item>
 		</levels_>
-		<networks_ class_id="22" tracking_level="0" version="0">
+		<networks_ class_id="23" tracking_level="0" version="0">
 			<count>5</count>
 			<item_version>0</item_version>
-			<item class_id="23" tracking_level="0" version="0">
+			<item class_id="24" tracking_level="0" version="0">
 				<first>BackingStorage &lt;==&gt; iact_spad</first>
-				<second class_id="24" tracking_level="0" version="1">
-					<px class_id="25" class_name="model::LegacyNetwork" tracking_level="1" version="0" object_id="_6">
-						<Network class_id="26" tracking_level="0" version="0"></Network>
-						<specs_ class_id="27" tracking_level="0" version="0">
-							<NetworkSpecs class_id="28" tracking_level="0" version="0">
+				<second class_id="25" tracking_level="0" version="1">
+					<px class_id="26" class_name="model::LegacyNetwork" tracking_level="1" version="0" object_id="_6">
+						<Network class_id="27" tracking_level="0" version="0"></Network>
+						<specs_ class_id="28" tracking_level="0" version="0">
+							<NetworkSpecs class_id="29" tracking_level="0" version="0">
 								<name>BackingStorage &lt;==&gt; iact_spad</name>
 							</NetworkSpecs>
 							<word_bits>
-								<t_>8</t_>
+								<t_>16</t_>
 							</word_bits>
 							<router_energy></router_energy>
 							<wire_energy></wire_energy>
@@ -2324,12 +2559,12 @@
 							</tile_width>
 							<energy_per_hop></energy_per_hop>
 						</specs_>
-						<stats_ class_id="29" tracking_level="0" version="0">
+						<stats_ class_id="30" tracking_level="0" version="0">
 							<fanout>
 								<PerDataSpace>
-									<item>1</item>
-									<item>1</item>
-									<item>1</item>
+									<item>0</item>
+									<item>0</item>
+									<item>0</item>
 								</PerDataSpace>
 							</fanout>
 							<distributed_fanout>
@@ -2341,9 +2576,9 @@
 							</distributed_fanout>
 							<multicast_factor>
 								<PerDataSpace>
-									<item>1</item>
-									<item>1</item>
-									<item>1</item>
+									<item>0</item>
+									<item>0</item>
+									<item>0</item>
 								</PerDataSpace>
 							</multicast_factor>
 							<distributed_multicast>
@@ -2376,9 +2611,9 @@
 							</link_transfer_energy>
 							<num_hops>
 								<PerDataSpace>
-									<item>5.00000000000000000e-01</item>
-									<item>5.00000000000000000e-01</item>
-									<item>5.00000000000000000e-01</item>
+									<item>0.00000000000000000e+00</item>
+									<item>0.00000000000000000e+00</item>
+									<item>0.00000000000000000e+00</item>
 								</PerDataSpace>
 							</num_hops>
 							<energy_per_hop>
@@ -2409,7 +2644,7 @@
 			<item>
 				<first>iact_spad &lt;==&gt; weight_spad</first>
 				<second>
-					<px class_id_reference="25" object_id="_7">
+					<px class_id_reference="26" object_id="_7">
 						<Network></Network>
 						<specs_>
 							<NetworkSpecs>
@@ -2428,9 +2663,9 @@
 						<stats_>
 							<fanout>
 								<PerDataSpace>
+									<item>0</item>
 									<item>1</item>
-									<item>1</item>
-									<item>1</item>
+									<item>0</item>
 								</PerDataSpace>
 							</fanout>
 							<distributed_fanout>
@@ -2442,9 +2677,9 @@
 							</distributed_fanout>
 							<multicast_factor>
 								<PerDataSpace>
+									<item>0</item>
 									<item>1</item>
-									<item>1</item>
-									<item>1</item>
+									<item>0</item>
 								</PerDataSpace>
 							</multicast_factor>
 							<distributed_multicast>
@@ -2477,9 +2712,9 @@
 							</link_transfer_energy>
 							<num_hops>
 								<PerDataSpace>
+									<item>0.00000000000000000e+00</item>
 									<item>5.00000000000000000e-01</item>
-									<item>5.00000000000000000e-01</item>
-									<item>5.00000000000000000e-01</item>
+									<item>0.00000000000000000e+00</item>
 								</PerDataSpace>
 							</num_hops>
 							<energy_per_hop>
@@ -2510,7 +2745,7 @@
 			<item>
 				<first>psum_spad &lt;==&gt; reg</first>
 				<second>
-					<px class_id_reference="25" object_id="_8">
+					<px class_id_reference="26" object_id="_8">
 						<Network></Network>
 						<specs_>
 							<NetworkSpecs>
@@ -2611,7 +2846,7 @@
 			<item>
 				<first>reg &lt;==&gt; MAC</first>
 				<second>
-					<px class_id_reference="25" object_id="_9">
+					<px class_id_reference="26" object_id="_9">
 						<Network></Network>
 						<specs_>
 							<NetworkSpecs>
@@ -2712,7 +2947,7 @@
 			<item>
 				<first>weight_spad &lt;==&gt; psum_spad</first>
 				<second>
-					<px class_id_reference="25" object_id="_10">
+					<px class_id_reference="26" object_id="_10">
 						<Network></Network>
 						<specs_>
 							<NetworkSpecs>
@@ -2733,7 +2968,7 @@
 								<PerDataSpace>
 									<item>1</item>
 									<item>1</item>
-									<item>1</item>
+									<item>0</item>
 								</PerDataSpace>
 							</fanout>
 							<distributed_fanout>
@@ -2747,7 +2982,7 @@
 								<PerDataSpace>
 									<item>1</item>
 									<item>1</item>
-									<item>1</item>
+									<item>0</item>
 								</PerDataSpace>
 							</multicast_factor>
 							<distributed_multicast>
@@ -2782,7 +3017,7 @@
 								<PerDataSpace>
 									<item>5.00000000000000000e-01</item>
 									<item>5.00000000000000000e-01</item>
-									<item>5.00000000000000000e-01</item>
+									<item>0.00000000000000000e+00</item>
 								</PerDataSpace>
 							</num_hops>
 							<energy_per_hop>
@@ -2813,35 +3048,35 @@
 		</networks_>
 	</topology_>
 </engine>
-<mapping class_id="30" tracking_level="0" version="0">
+<mapping class_id="31" tracking_level="0" version="0">
 	<datatype_bypass_nest>
-		<item class_id="31" tracking_level="0" version="0">
-			<bits>0000000000010000</bits>
+		<item class_id="32" tracking_level="0" version="0">
+			<bits>0000000000000100</bits>
 		</item>
 		<item>
-			<bits>0000000000010010</bits>
+			<bits>0000000000001001</bits>
 		</item>
 		<item>
-			<bits>0000000000010100</bits>
+			<bits>0000000000000010</bits>
 		</item>
 	</datatype_bypass_nest>
 </mapping>
-<a class_id="32" tracking_level="1" version="0" object_id="_11">
-	<workload_ class_id="33" tracking_level="0" version="0">
-		<factorized_bounds_ class_id="34" tracking_level="0" version="0">
+<a class_id="33" tracking_level="1" version="0" object_id="_11">
+	<workload_ class_id="34" tracking_level="0" version="0">
+		<factorized_bounds_ class_id="35" tracking_level="0" version="0">
 			<count>3</count>
 			<item_version>0</item_version>
-			<item class_id="35" tracking_level="0" version="0">
+			<item class_id="36" tracking_level="0" version="0">
 				<first>0</first>
 				<second>1</second>
 			</item>
 			<item>
 				<first>1</first>
-				<second>256</second>
+				<second>16384</second>
 			</item>
 			<item>
 				<first>2</first>
-				<second>256</second>
+				<second>16384</second>
 			</item>
 		</factorized_bounds_>
 		<coefficients_>
@@ -2856,21 +3091,21 @@
 				<second>1</second>
 			</item>
 		</coefficients_>
-		<densities_ class_id="36" tracking_level="0" version="0">
+		<densities_ class_id="37" tracking_level="0" version="0">
 			<count>3</count>
 			<item_version>0</item_version>
-			<item class_id="37" tracking_level="0" version="0">
+			<item class_id="38" tracking_level="0" version="0">
 				<first>0</first>
-				<second class_id="38" tracking_level="0" version="1">
-					<px class_id="39" class_name="problem::HypergeometricDistribution" tracking_level="1" version="0" object_id="_12">
-						<DensityDistribution class_id="40" tracking_level="0" version="0"></DensityDistribution>
-						<specs_ class_id="41" tracking_level="0" version="0">
-							<DensityDistributionSpecs class_id="42" tracking_level="0" version="0">
+				<second class_id="39" tracking_level="0" version="1">
+					<px class_id="40" class_name="problem::HypergeometricDistribution" tracking_level="1" version="0" object_id="_12">
+						<DensityDistribution class_id="41" tracking_level="0" version="0"></DensityDistribution>
+						<specs_ class_id="42" tracking_level="0" version="0">
+							<DensityDistributionSpecs class_id="43" tracking_level="0" version="0">
 								<type>UNSET</type>
 							</DensityDistributionSpecs>
 							<type>hypergeometric</type>
-							<average_density>1.00000000000000002e-02</average_density>
-							<workload_tensor_size>65536</workload_tensor_size>
+							<average_density>1.83105468750000000e-04</average_density>
+							<workload_tensor_size>268435456</workload_tensor_size>
 						</specs_>
 					</px>
 				</second>
@@ -2878,15 +3113,15 @@
 			<item>
 				<first>1</first>
 				<second>
-					<px class_id_reference="39" object_id="_13">
+					<px class_id_reference="40" object_id="_13">
 						<DensityDistribution></DensityDistribution>
 						<specs_>
 							<DensityDistributionSpecs>
 								<type>UNSET</type>
 							</DensityDistributionSpecs>
 							<type>hypergeometric</type>
-							<average_density>1.00000000000000002e-02</average_density>
-							<workload_tensor_size>256</workload_tensor_size>
+							<average_density>1.83105468750000000e-04</average_density>
+							<workload_tensor_size>16384</workload_tensor_size>
 						</specs_>
 					</px>
 				</second>
@@ -2894,9 +3129,9 @@
 			<item>
 				<first>2</first>
 				<second>
-					<px class_id="43" class_name="problem::FixedStructuredDistribution" tracking_level="1" version="0" object_id="_14">
+					<px class_id="44" class_name="problem::FixedStructuredDistribution" tracking_level="1" version="0" object_id="_14">
 						<DensityDistribution></DensityDistribution>
-						<specs_ class_id="44" tracking_level="0" version="0">
+						<specs_ class_id="45" tracking_level="0" version="0">
 							<DensityDistributionSpecs>
 								<type>UNSET</type>
 							</DensityDistributionSpecs>

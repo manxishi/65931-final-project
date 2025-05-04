@@ -28,10 +28,11 @@ architecture:
     # Processing-element array  #
     # ------------------------- #
     subtree:
-    - name: PE[0..191]
+    - name: PE[0..15]
       attributes:
-        meshX: 8
-        meshY: 24
+        meshX: 4
+        meshY: 4
+      
 
       local:
       # ----- scratchpads ----- #
@@ -40,7 +41,6 @@ architecture:
         subclass: SRAM_MD
         attributes:
           spatial: True
-          instances: 1
           data_storage_depth: 16
           data_storage_width: 8
           metadata_storage_depth: 25  # 25  # 9 addr entries, 16 run entries   
@@ -54,7 +54,6 @@ architecture:
         subclass: SRAM_MD
         attributes:
           spatial: True
-          instances: 1
           data_storage_depth: 192      
           data_storage_width: 8
           metadata_storage_depth: 128  # 16 7b addr entries, 192 4b run entries
@@ -62,13 +61,11 @@ architecture:
           datawidth: 8
           block_size: 1
 
-
       - name: psum_spad
         class: storage
         subclass: SRAM
         attributes:
           spatial: True
-          instances: 1
           depth: 32
           width: 20
           datawidth: 20
@@ -79,7 +76,6 @@ architecture:
         subclass: SRAM_MD
         attributes:
           spatial: True
-          instances: 1
           data_storage_depth: 1
           data_storage_width: 8
           metadata_storage_width: 4
@@ -90,6 +86,5 @@ architecture:
       - name: MAC
         class: Imac
         attributes:
-          spatial: True
-          instances: 1
+          spatial: True 
           datawidth: 8

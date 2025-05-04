@@ -319,17 +319,26 @@ def plot_read_write_energy(energy_breakdown_pJ):
     Plot read and write energy breakdown given dict of energy breakdown.
     """
     levels = list(energy_breakdown_pJ.keys())
+    ignore = ["BackingStorage"]
 
     read_energies = []
     write_energies = []
 
+
     for level in levels:
+        print(level)
+        print(energy_breakdown_pJ[level])
+        # if level in ignore:
+        #     read_energies.append(0)
+        #     write_energies.append(0)
+        #     continue
+        
         stats = energy_breakdown_pJ[level]
 
         # Skip levels with no detailed energy (e.g., MAC)
         if 'actual_reads_per_instance' not in stats:
-            read_energies.append(0)
-            write_energies.append(0)
+            read_energies.append(stats['energy'])
+            write_energies.append(stats['energy'])
             continue
 
         read_energy = np.nansum(
