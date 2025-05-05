@@ -5,7 +5,7 @@ BackingStorage [ ]
 |   for M in [0:4)
 |     for N in [0:2) (Spatial-X)
 
-iact_spad [ Inputs:8 (3) ] 
+iact_spad [ Inputs:8 (8) ] 
 --------------------------
 |       for N in [0:8)
 |         for M in [0:64)
