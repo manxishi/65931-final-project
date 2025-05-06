@@ -58,7 +58,7 @@ mapper:
   optimization-metrics: [energy, delay]
   optimization-target: latency
   search-size: 256
-  victory-condition: 1
+  victory-condition: 10
   timeout: 600  # seconds (10 minutes max)
   diagnostics: True
   max-permutations-per-factorization: 2
@@ -99,8 +99,8 @@ mapper:
       - target: BackingStorage
         bypass: [Inputs, Weights, Outputs]  # DRAM is always bypassed except for loads/stores
       - target: reg
-        bypass: [Weights, Outputs]
-        keep: [Inputs]  # Only Inputs are kept temporally at MAC register
+        bypass: [Outputs]
+        keep: [Weights, Inputs]  # Only Inputs are kept temporally at MAC register
 
 
 # mapper:

@@ -1,0 +1,36 @@
+problem:
+  shape:
+    name: "matmul" # x = M @ b
+    dimensions: [C, M, N]  # Kernel, Width, Channels, Filters, Batches
+    coefficients:
+      - name: stride
+        default: 1
+      - name: dilation
+        default: 1
+
+    data-spaces:
+      - name: Weights # M 
+        projection:
+          - [ [M] ]
+          - [ [N] ]
+      - name: Inputs
+        projection:
+          - [ [N] ]
+          - [ [C] ]
+      - name: Outputs
+        projection:
+          - [ [M] ]
+          - [ [C] ]
+        read-write: True
+
+  instance:
+    C: 1    
+    M: 16384    
+    N: 16384     
+    densities:
+      Inputs:
+        distribution: hypergeometric
+        density: 0.5
+      Weights:
+        distribution: banded
+        density: 0.5

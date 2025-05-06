@@ -36,18 +36,18 @@ problem:
           - [ [E] ]
         read-write: True
   instance: 
-    M: 4096   
-    E: 2048   
-    F: 1024   
-    R: 4   
-    S: 4   
-    N: 4   
-    G: 4   
+    M: 64   
+    E: 32   
+    F: 32   
+    R: 1   
+    S: 1   
+    N: 1   
+    G: 1   
     C: 64   
     densities: 
       Inputs: 
-        distribution: fixed-structured
+        distribution: hypergeometric
         density: 0.0001 
       Weights: 
-        distribution: fixed-structured
+        distribution: hypergeometric
         density: 0.0001 

@@ -1,0 +1,14 @@
+# mapper:
+#   optimization-metrics: [energy, delay]
+#   search-size: 1000
+#   victory-condition: 1000
+#   timeout: 1000  
+#   algorithm: random-pruned
+#   num-threads: 4
+mapper:
+  optimization-metrics: [energy, delay]
+  search-size: 10000
+  victory-condition: 10000
+  timeout: 10000  
+  algorithm: random-pruned
+  num-threads: 4

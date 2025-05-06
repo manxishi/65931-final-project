@@ -1,0 +1,15 @@
+ART:
+  version: 0.3
+  tables:
+  - name: system.PE[0..15].psum_spad
+    area: 1020.59
+  - name: system.BackingStorage
+    area: 0
+  - name: system.PE[0..15].iact_spad
+    area: 485.1975
+  - name: system.PE[0..15].weight_spad
+    area: 3107.32
+  - name: system.PE[0..15].reg
+    area: 47.84
+  - name: system.PE[0..15].MAC
+    area: 332.25

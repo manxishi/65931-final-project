@@ -1,28 +1,24 @@
 
-BackingStorage [ Weights:4096 (4096) Inputs:65536 (65536) Outputs:65536 (65536) ] 
----------------------------------------------------------------------------------
-| for E in [0:4)
-|   for F in [0:2)
+BackingStorage [ Weights:4096 (1) Inputs:65536 (7) Outputs:65536 (65536) ] 
+--------------------------------------------------------------------------
+| for G in [0:1)
 
 iact_spad [ ] 
 -------------
-|     for M in [0:8)
-|       for F in [0:2)
-|         for E in [0:4)
-|           for C in [0:16)
+|   for F in [0:4)
+|     for E in [0:8)
 
-weight_spad [ Inputs:64 (64) Outputs:128 (128) ] 
-------------------------------------------------
-|             for C in [0:2)
-|               for M in [0:4)
+weight_spad [ ] 
+---------------
+|       for E in [0:2)
 
-psum_spad [ Weights:4 (4) ] 
----------------------------
-|                 for M in [0:2)
-|                   for F in [0:8)
-|                     for E in [0:2)
+psum_spad [ ] 
+-------------
+|         for F in [0:8)
+|           for E in [0:2)
 
-reg [ Outputs:1 (1) ] 
----------------------
-|                       for C in [0:2)
+reg [ ] 
+-------
+|             for M in [0:64)
+|               for C in [0:64)
 

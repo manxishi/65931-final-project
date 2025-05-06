@@ -1,0 +1,49 @@
+mapping:
+  # ---------- Off-chip DRAM ----------
+  - target: BackingStorage
+    type:   temporal
+    factors: { R:4, S:4, E:32, F:32, C:64, M:2048, N:4, G:4 }
+    permutation: [N, G, C, M, R, S, E, F]
+
+  # ---------- Global buffer banks ----------
+  - target: iact_bank
+    type:   temporal
+    factors: { R:4, S:4, E:16, F:16, C:64, M:256, N:4, G:4 }
+    permutation: [N, G, C, M, R, S, E, F]
+
+  - target: psum_bank
+    type:   temporal
+    factors: { R:2, S:2, E:8, F:8, C:32, M:128, N:4, G:4 }
+    permutation: [N, G, C, M, R, S, E, F]
+
+  # ---------- PE scratch-pads ----------
+  - target: iact_spad
+    type:   temporal
+    factors: { E:8, F:8, C:16, N:4 }
+    permutation: [N, C, E, F]
+
+  - target: weight_spad
+    type:   temporal
+    factors: { C:16, M:16, G:4 }
+    permutation: [G, C, M]
+
+  - target: psum_spad
+    type:   temporal
+    factors: { M:16 }
+    permutation: [M]
+
+  # ---------- Compute level (8×2 spatial split) ----------
+  - target: MAC
+    type:   spatial
+    factors:
+      X: { F: 8 }      # 8 columns
+      Y: { E: 2 }      # 2 rows
+    permutation: [N, G, C, M, R, S, E, F]
+
+datatype_bypass:
+  - target: iact_spad
+    bypass: [Inputs]
+  - target: weight_spad
+    bypass: [Weights]
+  - target: psum_spad
+    bypass: [Outputs]

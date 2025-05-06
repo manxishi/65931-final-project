@@ -1,0 +1,148 @@
+ERT:
+  version: 0.3
+  tables:
+  - name: system.PE[0..15].psum_spad
+    actions:
+    - name: read
+      arguments:
+        address_delta: 0
+        data_delta: 0
+      energy: 1.0e-05
+    - name: read
+      arguments:
+        address_delta: 0
+        data_delta: 1
+      energy: 0.38169
+    - name: read
+      arguments:
+        address_delta: 1
+        data_delta: 0
+      energy: 0.16358
+    - name: read
+      arguments:
+        address_delta: 1
+        data_delta: 1
+      energy: 0.54526
+    - name: write
+      arguments:
+        address_delta: 0
+        data_delta: 0
+      energy: 1.0e-05
+    - name: write
+      arguments:
+        address_delta: 0
+        data_delta: 1
+      energy: 0.50265
+    - name: write
+      arguments:
+        address_delta: 1
+        data_delta: 0
+      energy: 0.21542
+    - name: write
+      arguments:
+        address_delta: 1
+        data_delta: 1
+      energy: 0.71807
+    - name: idle
+      arguments: null
+      energy: 1.0e-05
+  - name: system.BackingStorage
+    actions:
+    - name: read
+      arguments: null
+      energy: 998.4
+    - name: write
+      arguments: null
+      energy: 998.4
+    - name: idle
+      arguments: null
+      energy: 0
+  - name: system.PE[0..15].iact_spad
+    actions:
+    - name: write
+      arguments: null
+      energy: 0.13003
+    - name: read
+      arguments: null
+      energy: 0.13003
+    - name: gated_write
+      arguments: null
+      energy: 0.0032
+    - name: gated_read
+      arguments: null
+      energy: 0.0032
+    - name: metadata_read
+      arguments: null
+      energy: 0.14934
+    - name: metadata_write
+      arguments: null
+      energy: 0.14934
+    - name: gated_metadata_read
+      arguments: null
+      energy: 0.00195
+    - name: gated_metadata_write
+      arguments: null
+      energy: 0.00195
+  - name: system.PE[0..15].weight_spad
+    actions:
+    - name: write
+      arguments: null
+      energy: 0.59359
+    - name: read
+      arguments: null
+      energy: 0.53321
+    - name: gated_write
+      arguments: null
+      energy: 1.0e-05
+    - name: gated_read
+      arguments: null
+      energy: 1.0e-05
+    - name: metadata_read
+      arguments: null
+      energy: 0.47678
+    - name: metadata_write
+      arguments: null
+      energy: 0.51919
+    - name: gated_metadata_read
+      arguments: null
+      energy: 1.0e-05
+    - name: gated_metadata_write
+      arguments: null
+      energy: 1.0e-05
+  - name: system.PE[0..15].reg
+    actions:
+    - name: write
+      arguments: null
+      energy: 0.072
+    - name: read
+      arguments: null
+      energy: 0.072
+    - name: gated_write
+      arguments: null
+      energy: 0.00296
+    - name: gated_read
+      arguments: null
+      energy: 0.00296
+    - name: metadata_read
+      arguments: null
+      energy: 0
+    - name: metadata_write
+      arguments: null
+      energy: 0
+    - name: gated_metadata_read
+      arguments: null
+      energy: 0
+    - name: gated_metadata_write
+      arguments: null
+      energy: 0
+  - name: system.PE[0..15].MAC
+    actions:
+    - name: mac_random
+      arguments: null
+      energy: 0.5608
+    - name: mac_gated
+      arguments: null
+      energy: 0.01798
+    - name: mac_skipped
+      arguments: null
+      energy: 0.01798

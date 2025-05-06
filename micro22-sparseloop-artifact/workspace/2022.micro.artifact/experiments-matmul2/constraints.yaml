@@ -1,0 +1,324 @@
+# architecture_constraints:
+
+#   # FANOUT constraint to avoid over-broadcasting
+#   fanout:
+#     type: uniform
+#     value: 16  # reasonable upper limit for shared buses or unicast loads
+
+#   # UTILIZATION constraint for compute units
+#   utilization:
+#     type: compute
+#     target: MAC
+#     min: 0.3  # skip mappings that use less than 30% of MACs
+
+#   # MAX SPATIAL SPLITS — limit unrolling explosion
+#   spatial_splits:
+#     type: max
+#     value: 3  # allow up to 3 levels of spatial unrolling (e.g., E, F, G)
+
+#   # MAX PARALLELISM per level
+#   max_parallelism:
+#     PE:
+#       Inputs: 64
+#       Weights: 64
+#       Outputs: 64
+
+#   # MAX TEMPORAL DEPTH — controls how many nested temporal loops are allowed
+#   temporal_loops:
+#     max_per_operand:
+#       Inputs: 4
+#       Weights: 4
+#       Outputs: 4
+
+#   # STORAGE LEVEL CONSTRAINTS (optional, skip if not needed)
+#   storage:
+#     iact_spad:
+#       Inputs:
+#         max_temporal_reuse: 128  # limit how many times to reuse data temporally
+#     weight_spad:
+#       Weights:
+#         max_temporal_reuse: 128
+#     psum_spad:
+#       Outputs:
+#         max_temporal_reuse: 256
+# constraints:
+#   version: 0.4
+
+#   # 1. INDEX–FACTOR CONSTRAINTS  ---------------------------------------
+#   #    – Fix the trivially-small kernel dims (R,S) to 1
+#   #    – Only tile E,F by powers-of-2 up to 32
+#   #    – Tile C,M by multiples of the PE’s vector width (8) up to a row
+#   #      of the PE mesh (24 = 3×8); leave the rest for the GLB or DRAM.
+#   index_factorization:
+#     targets:
+#       - target: MAC           # ← exact compute-node name
+#         factors:
+#           R: [1]
+#           S: [1]
+#           E: [1, 2, 4, 8, 16, 32]
+#           F: [1, 2, 4, 8, 16, 32]
+#           C: [8, 16, 24]
+#           M: [8, 16, 24]
+#           N: [1]              # single image / batch
+
+#   # 2. LOOP-PERMUTATION CONSTRAINTS  -----------------------------------
+#   #    – Force the spatially-partitioned dims (E,F) to appear in
+#   #      *innermost* position so they map cleanly to the XY mesh.
+#   loop_permutation:
+#     targets:
+#       - target: MAC
+#         permutation:
+#           - [R, S]            # first (highest) loop level
+#           - [N]               # ...
+#           - [C,  M]           # ...
+#           - [E,  F]           # innermost (lowest) loop level
+
+#   # 3. SPATIAL-MAPPING CONSTRAINTS  ------------------------------------
+#   #    – Split E across X (8 columns), F across Y (2 rows)
+#   spatial:
+#     targets:
+#       - target: MAC
+#         factors:
+#           X: { F: 8 }
+#           Y: { E: 2 }
+
+#   # 4. DATATYPE-BYPASS CONSTRAINTS  ------------------------------------
+#   datatype_bypass:
+#     targets:
+#       - bypass:
+#           weights:  { [BackingStorage]:      [keep] }
+#           inputs:   { [BackingStorage]:      [keep] }
+#           psums:    { [BackingStorage]:      [keep] }
+# constraints:
+#   version: 0.4
+
+#   # 1 ▸ INDEX FACTORISATION
+#   #    – kernel 1×1
+#   #    – spatial E,F ≤ 16 (fit 8×2 mesh nicely)
+#   #    – channel C,M only multiples of 16
+#   index_factorization:
+#     targets:
+#       - target: MAC                      # exact compute node name
+#         factors:
+#           R: [1]
+#           S: [1]
+#           E: [1]
+#           F: [1]
+#           C: [16]
+#           M: [16]
+#           N: [1]
+#           G: [1]
+
+#   # 2 ▸ LOOP PERMUTATION (FROZEN)
+#   #    – one canonical order; mapper will not permute
+#   loop_permutation:
+#     targets:
+#       - target: MAC
+#         permutation:
+#           - [N]
+#           - [C, M]
+#           - [R, S]
+#           - [E, F]
+
+#   # 3 ▸ SPATIAL SPLIT
+#   #    – 8 columns → F, 2 rows → E
+#   spatial:
+#     targets:
+#       - target: MAC
+#         factors:
+#           X: { F: 8 }
+#           Y: { E: 2 }
+
+#   # 4 ▸ DATATYPE BYPASS (LOCKED)
+#   #    – one pattern → dimension size = 1
+#   datatype_bypass:
+#     targets:
+#       - bypass:
+#           inputs:   { [BackingStorage]: [keep] }
+#           weights:  { [BackingStorage]: [keep] }
+#           psums:    { [BackingStorage]: [keep] }
+# constraints:
+#   version: 0.4
+
+#   # 1 ─ Index-factorisation
+#   index_factorization:
+#     targets:
+#       - target: MAC
+#         factors_only:
+#           R: [1]
+#           S: [1]
+#           E: [1]
+#           F: [1]
+#           C: [4]
+#           M: [4]
+#           N: [1]
+#           G: [1]
+
+#   # 2 ─ Loop-permutation (frozen order)
+#   loop_permutation:
+#     targets:
+#       - target: MAC
+#         permutation:
+#           - [N]
+#           - [G]
+#           - [C, M]
+#           - [R, S]
+#           - [E, F]
+
+#   # 3 ─ Spatial split (8×2 mesh)
+#   spatial:
+#     targets:
+#       - target: MAC
+#         factors:
+#           X:
+#             F: 8
+#           Y:
+#             E: 2
+
+#   # 4 ─ Storage size limits
+#   storage_boundaries:
+#     targets:
+#       - target: ifmap_spad
+#         max_tiles:
+#           E: 8
+#           F: 8
+#         min_tiles:
+#           E: 8
+#           F: 8
+#       - target: weight_spad
+#         max_tiles:
+#           C: 32
+#         min_tiles:
+#           C: 32
+#       - target: psum_spad
+#         max_tiles:
+#           M: 32
+#         min_tiles:
+#           M: 32
+
+#   # 5 ─ Tile pinning
+#   tile_constraints:
+#     targets:
+#       - target: iact_bank
+#         factors:
+#           E: [1]
+#           F: [8]
+#       - target: weight_spad
+#         factors:
+#           C: [32]
+
+#   # 6 ─ Datatype bypass (single pattern)
+#   datatype_bypass:
+#     targets:
+#       - bypass:
+#           inputs:
+#             "[BackingStorage]": [keep]
+#           weights:
+#             "[BackingStorage]": [keep]
+#           psums:
+#             "[BackingStorage]": [keep]
+# architecture_constraints:
+#   targets:
+#   # -------------------- DRAM (BackingStorage) --------------------
+#   # Temporal: only split the filter-width (R) between DRAM and lower
+#   - target:           BackingStorage
+#     type:             bypass
+#     bypass: [Inputs, Outputs, Weights]
+
+
+
+#   # -------------------- Input-activation SRAM --------------------
+#   - bypass:
+#     - Weights
+#     - Outputs
+#     keep:
+#     - Inputs
+#     target:           iact_spad
+#     type:             bypass
+
+#   # -------------------- Weight SRAM ------------------------------
+#   - bypass:
+#     - Inputs
+#     - Outputs
+#     keep:
+#     - Weights
+#     target:           weight_spad
+#     type:             bypass
+
+#   # -------------------- Partial-sum SRAM -------------------------
+#   - bypass:
+#     - Inputs
+#     - Weights
+#     keep:
+#     - Outputs
+#     target:           psum_spad
+#     type:             bypass
+
+#   # -------------------- Register file at the MAC -----------------
+#     target:           reg
+#     type:             temporal
+#   - bypass:
+#     - Weights
+#     - Outputs
+#     keep:
+#     - Inputs
+#     target:           reg
+#     type:             bypass
+
+
+# architecture_constraints:
+#   targets:
+
+#     # -------------------- DRAM (BackingStorage) --------------------
+#     - target: BackingStorage
+#       type: bypass
+#       bypass: [Inputs, Outputs, Weights]
+
+#     # -------------------- Input-activation SRAM --------------------
+#     - target: iact_spad
+#       type: bypass
+#       bypass: [Weights, Outputs]
+#       keep: [Inputs]
+
+#     # -------------------- Weight SRAM ------------------------------
+#     - target: weight_spad
+#       type: bypass
+#       bypass: [Inputs, Outputs]
+#       keep: [Weights]
+
+#     # -------------------- Partial-sum SRAM -------------------------
+#     - target: psum_spad
+#       type: bypass
+#       bypass: [Inputs, Weights]
+#       keep: [Outputs]
+
+#     # -------------------- Register file at the MAC -----------------
+#     - target: reg
+#       type: temporal
+#       bypass: [Weights, Outputs]
+#       keep: [Inputs]
+      
+architecture_constraints:
+  targets:
+
+    # -------------------- Input-activation SRAM --------------------
+    - target: iact_spad
+      type: bypass
+      bypass: [Weights, Outputs]
+      keep: [Inputs]
+
+    # -------------------- Weight SRAM ------------------------------
+    - target: weight_spad
+      type: bypass
+      bypass: [Inputs, Outputs]
+      keep: [Weights]
+
+    # -------------------- Partial-sum SRAM -------------------------
+    - target: psum_spad
+      type: bypass
+      bypass: [Inputs, Weights]
+      keep: [Outputs]
+
+    - target: BackingStorage
+      type: bypass
+      bypass: [Inputs, Outputs, Weights]

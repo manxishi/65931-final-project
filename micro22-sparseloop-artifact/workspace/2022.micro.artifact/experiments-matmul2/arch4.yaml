@@ -1,0 +1,178 @@
+# architecture:
+#   # ============================================================
+#   # Architecture Description
+#   # ============================================================
+#   version: 0.4
+#   nodes: # Top-level is hierarchical
+#   - !Container # Top-level system
+#     name: system
+  
+#   - !Component # DRAM main memory
+#     name: BackingStorage      # one DRAM for the whole chip
+#     class: DRAM
+#     subclass: DRAM
+#     attributes:
+#       spatial: False          # NOT replicated across PEs
+#       instances: 1
+#       type: HBM2
+#       width: 256
+#       block-size: 16
+#       word-bits: 16
+#       metadata_storage_width: 16
+
+#   - !Container # Eyeriss accelerator
+#     name: eyeriss-v2
+#     attributes:
+#       technology: "45nm"
+
+#   - !Container # Each PE in the column receives a different filter row
+#     name: PE
+#     spatial: {meshX: 8, meshY: 24}
+
+#   - !Parallel # Input/Output/Weight scratchpads in parallel
+#     nodes:
+#     - !Component # Input scratchpad
+#       name: iact_spad
+#       class: storage
+#       subclass: SRAM_MD
+#       attributes:
+#         spatial: True
+#         instances: 1
+#         data_storage_depth: 16
+#         data_storage_width: 8
+#         metadata_storage_depth: 25  # 25  # 9 addr entries, 16 run entries   
+#         metadata_storage_width: 4
+#         datawidth: 8
+#         block_size: 1
+
+#     - !Component # Weight scratchpad
+#       name: weight_spad
+#       class: storage
+#       subclass: SRAM_MD
+#       attributes:
+#         spatial: True
+#         instances: 1
+#         data_storage_depth: 192      
+#         data_storage_width: 8
+#         metadata_storage_depth: 128  # 16 7b addr entries, 192 4b run entries
+#         metadata_storage_width: 8
+#         datawidth: 8
+#         block_size: 1
+
+#     - !Component # Output scratchpad
+#       name: psum_spad
+#       class: storage
+#       subclass: SRAM
+#       attributes:
+#         spatial: True
+#         instances: 1
+#         depth: 32
+#         width: 20
+#         datawidth: 20
+#         block_size: 1
+
+#     - !Component
+#       name: reg
+#       class: storage
+#       subclass: SRAM_MD
+#       attributes:
+#         spatial: True
+#         instances: 1
+#         data_storage_depth: 1
+#         data_storage_width: 8
+#         metadata_storage_width: 4
+#         metadata_storage_depth: 1
+#         datawidth: 8
+
+#   - !Component # MAC unit
+#     name: MAC
+#     class: Imac
+#     attributes:
+#       spatial: True
+#       instances: 1
+#       datawidth: 8
+architecture:
+  version: 0.3
+  nodes:
+    - name: system
+      attributes:
+        # system-level attributes if needed
+      local:
+        nodes:
+          - name: BackingStorage
+            class: DRAM
+            subclass: DRAM
+            attributes:
+              spatial: False
+              instances: 1
+              type: HBM2
+              width: 256
+              block-size: 16
+              word-bits: 16
+              metadata_storage_width: 16
+
+          - name: eyeriss-v2
+            attributes:
+              technology: "45nm"
+            local:
+              nodes:
+                - name: PE
+                  attributes:
+                    spatial: {meshX: 8, meshY: 24}
+                  local:
+                    nodes:
+                      - name: iact_spad
+                        class: storage
+                        subclass: SRAM_MD
+                        attributes:
+                          spatial: True
+                          instances: 1
+                          data_storage_depth: 16
+                          data_storage_width: 8
+                          metadata_storage_depth: 25
+                          metadata_storage_width: 4
+                          datawidth: 8
+                          block_size: 1
+
+                      - name: weight_spad
+                        class: storage
+                        subclass: SRAM_MD
+                        attributes:
+                          spatial: True
+                          instances: 1
+                          data_storage_depth: 192
+                          data_storage_width: 8
+                          metadata_storage_depth: 128
+                          metadata_storage_width: 8
+                          datawidth: 8
+                          block_size: 1
+
+                      - name: psum_spad
+                        class: storage
+                        subclass: SRAM
+                        attributes:
+                          spatial: True
+                          instances: 1
+                          depth: 32
+                          width: 20
+                          datawidth: 20
+                          block_size: 1
+
+                      - name: reg
+                        class: storage
+                        subclass: SRAM_MD
+                        attributes:
+                          spatial: True
+                          instances: 1
+                          data_storage_depth: 1
+                          data_storage_width: 8
+                          metadata_storage_width: 4
+                          metadata_storage_depth: 1
+                          datawidth: 8
+
+                      - name: MAC
+                        class: Imac
+                        attributes:
+                          spatial: True
+                          instances: 1
+                          datawidth: 8
