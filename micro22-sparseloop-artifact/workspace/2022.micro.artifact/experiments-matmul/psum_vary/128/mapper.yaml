@@ -55,11 +55,11 @@
 #   # Optional: change this for very small problem sizes
 #   log-stats: true
 mapper:
-  optimization-metrics: [delay, energy]
+  optimization-metrics: [energy, delay]
   search-size: 10000
   victory-condition: 10000
-  timeout: 5000  
-  algorithm: random-pruned
+  timeout: 10000  
+  algorithm: hybrid
   num-threads: 4
 
 

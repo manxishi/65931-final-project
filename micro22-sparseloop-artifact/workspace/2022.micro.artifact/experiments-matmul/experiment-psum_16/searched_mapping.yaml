@@ -49,26 +49,26 @@ mapping:
       - Outputs
   - target: reg
     type: temporal
-    factors: C1 M1 N1
-    permutation: CMN
-  - target: psum_spad
-    type: temporal
-    factors: C1 M8 N1
-    permutation: MCN
-  - target: weight_spad
-    type: temporal
     factors: C1 M16 N1
     permutation: MCN
+  - target: psum_spad
+    type: temporal
+    factors: C1 M1 N4
+    permutation: NCM
+  - target: weight_spad
+    type: temporal
+    factors: C1 M1 N2
+    permutation: NCM
   - target: iact_spad
     type: temporal
-    factors: C1 M8 N1
+    factors: C1 M128 N1
     permutation: MCN
   - target: BackingStorage
     type: spatial
-    factors: C1 M1 N1024
+    factors: C1 M1 N8
     permutation: NCM
     split: 1
   - target: BackingStorage
     type: temporal
-    factors: C1 M16 N16
+    factors: C1 M8 N256
     permutation: MNC

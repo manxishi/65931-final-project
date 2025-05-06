@@ -1,7 +1,7 @@
 ERT:
   version: 0.3
   tables:
-  - name: system.PE[0..16383].psum_spad
+  - name: system.PE[0..15].psum_spad
     actions:
     - name: read
       arguments:
@@ -57,7 +57,7 @@ ERT:
     - name: idle
       arguments: null
       energy: 0
-  - name: system.PE[0..16383].iact_spad
+  - name: system.PE[0..15].iact_spad
     actions:
     - name: write
       arguments: null
@@ -83,7 +83,7 @@ ERT:
     - name: gated_metadata_write
       arguments: null
       energy: 0.00195
-  - name: system.PE[0..16383].weight_spad
+  - name: system.PE[0..15].weight_spad
     actions:
     - name: write
       arguments: null
@@ -109,7 +109,7 @@ ERT:
     - name: gated_metadata_write
       arguments: null
       energy: 1.0e-05
-  - name: system.PE[0..16383].reg
+  - name: system.PE[0..15].reg
     actions:
     - name: write
       arguments: null
@@ -135,7 +135,7 @@ ERT:
     - name: gated_metadata_write
       arguments: null
       energy: 0
-  - name: system.PE[0..16383].MAC
+  - name: system.PE[0..15].MAC
     actions:
     - name: mac_random
       arguments: null

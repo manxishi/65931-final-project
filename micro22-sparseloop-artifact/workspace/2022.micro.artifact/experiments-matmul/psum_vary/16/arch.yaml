@@ -28,11 +28,10 @@ architecture:
     # Processing-element array  #
     # ------------------------- #
     subtree:
-    - name: PE[0..16383]
+    - name: PE[0..15]
       attributes:
-        meshX: 128
-        meshY: 128
-
+        meshX: 4
+        meshY: 4
       
 
       local:

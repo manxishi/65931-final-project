@@ -1,0 +1,98 @@
+###############################################################################
+# sparse config for sparse inputs *and* sparse weights – MatMul (C·M·N)
+###############################################################################
+
+sparse_optimizations:
+  targets:
+  # -------------------------------------------------------------------------
+  # Off-chip / backing storage
+  # -------------------------------------------------------------------------
+  - name: BackingStorage
+    representation-format:
+      data-spaces:
+        - name: Inputs          # dims: [N] (inner) × [C] (outer)
+          ranks:
+            - format: UOP       # N (dense within a row)
+              payload-word-bits: 4
+              flattened-rankIDs: [[N]]
+            - format: RLE       # C (sparse rows)
+              metadata-word-bits: 4
+              flattened-rankIDs: [[C]]
+          rank-application-order: inner-to-outer
+
+        - name: Weights         # dims: [N] (inner) × [M] (outer)
+          ranks:
+            - format: UOP       # N (dense within a row)
+              payload-word-bits: 7
+              flattened-rankIDs: [[N]]
+            - format: RLE       # M (sparse rows)
+              metadata-word-bits: 4
+              flattened-rankIDs: [[M]]
+          rank-application-order: inner-to-outer
+
+  # -------------------------------------------------------------------------
+  # Input-activation scratchpad
+  # -------------------------------------------------------------------------
+  - name: iact_spad
+    representation-format:
+      data-spaces:
+        - name: Inputs
+          ranks:
+            - format: UOP
+              payload-word-bits: 4
+              flattened-rankIDs: [[N]]
+            - format: RLE
+              metadata-word-bits: 4
+              flattened-rankIDs: [[C]]
+          rank-application-order: inner-to-outer
+
+  # -------------------------------------------------------------------------
+  # Weight scratchpad
+  # -------------------------------------------------------------------------
+  - name: weight_spad
+    representation-format:
+      data-spaces:
+        - name: Weights
+          ranks:
+            - format: UOP
+              payload-word-bits: 7
+              flattened-rankIDs: [[N]]
+            - format: RLE
+              metadata-word-bits: 4
+              flattened-rankIDs: [[M]]
+          rank-application-order: inner-to-outer
+    action-optimization:
+      - type: skipping
+        options:
+          - target: Weights
+            condition-on: [Inputs]   # skip zero-weight MACs when Inputs are 0
+
+  # -------------------------------------------------------------------------
+  # Partial-sum scratchpad
+  # -------------------------------------------------------------------------
+  - name: psum_spad
+    action-optimization:
+      - type: skipping
+        options:
+          - target: Outputs
+            condition-on: [Inputs, Weights]
+
+  # -------------------------------------------------------------------------
+  # Register file (per-PE)
+  # -------------------------------------------------------------------------
+  - name: reg
+    representation-format:
+      data-spaces:
+        - name: Inputs
+          ranks:
+            - format: RLE
+              metadata-word-bits: 4
+              flattened-rankIDs: [[N]]   # keep only the sparse inner dim
+          rank-application-order: inner-to-outer
+
+  # -------------------------------------------------------------------------
+  # MAC array
+  # -------------------------------------------------------------------------
+  - name: MAC
+    compute-optimization:
+      - type: skipping

@@ -1,0 +1,24 @@
+
+BackingStorage [ ] 
+------------------
+| for N in [0:4096)
+|   for M in [0:32)
+|     for N in [0:4) (Spatial-X)
+|       for M in [0:4) (Spatial-X)
+
+iact_spad [ Inputs:1 (1) ] 
+--------------------------
+|         for M in [0:8)
+
+weight_spad [ Weights:16 (16) ] 
+-------------------------------
+|           for M in [0:4)
+
+psum_spad [ Outputs:4 (4) ] 
+---------------------------
+|             for M in [0:2)
+
+reg [ Inputs:1 (1) ] 
+--------------------
+|               for M in [0:2)
+

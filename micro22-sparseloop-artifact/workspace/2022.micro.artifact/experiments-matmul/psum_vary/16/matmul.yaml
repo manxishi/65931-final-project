@@ -30,7 +30,7 @@ problem:
     densities:
       Inputs:
         distribution: hypergeometric
-        density: 0.25
+        density: 0.00018310546875
       Weights:
         distribution: hypergeometric
         density: 0.00018310546875
